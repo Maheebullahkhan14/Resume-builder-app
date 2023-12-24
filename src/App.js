@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "../src/pdfCss/pdfTemplate1.css"
+import Maincontainer from "./Components/Maincontainer";
+import { AppContext } from "./ContextApi";
+import { useState, useEffect } from "react";
+import Maininformation from "./FormData";
 
 function App() {
+
+  const [activetabsection ,sectactivetab] = useState(Object.keys(Maininformation)[0])
+
+  const Resumesections = {
+    Basicinfo : "Basicinfo",
+    WorkExp : "WorkExp" ,
+    // Summary : "Summary", 
+    Education : "Education",
+    Projects : "Projects" ,
+    Skills : "Skills"
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContext.Provider
+    value={{Resumesections , Maininformation , sectactivetab ,activetabsection}}
+    >
+      <div className="App">
+        <Maincontainer />
+      </div>
+    </AppContext.Provider>
   );
 }
 

@@ -1,38 +1,356 @@
-.App {
-  text-align: center;
+
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700&display=swap');
+
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1,h2,h3,h4,h5 ,h6{
+	margin-bottom: 0px;
+	padding-bottom: 0px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+body{
+  overflow-x: hidden;
+  /* font-family: 'Poppins', sans-serif; */
+  font-family: 'Roboto Slab', serif;
+}
+/* Main Cover Box Starts from Here */
+.main-cover-box-wrapper {
+    background-repeat: no-repeat;
+    border-radius: 25px;
+    /* border: 1px solid dimgray; */
+    width: 92%;
+    margin: 0 auto;
+    padding: 20px 15px;
+    margin-top: 20px;
+    /* background: url('https://img.freepik.com/free-vector/low-poly-white-subtle-colors-background_1017-33838.jpg?w=826&t=st=1702924299~exp=1702924899~hmac=c20d9068ef57f91974d0e199d57b42a756cb8657c61b3b57892a0fadb7799544');
+    background: url('https://img.freepik.com/free-photo/vivid-blurred-colorful-wallpaper-background_58702-3767.jpg?w=740&t=st=1702924930~exp=1702925530~hmac=89607ad2cfc60fc222d554c4791023f381e4ea4bc2aaef5a48531994e8ea84fd'); */
+    background: url('https://img.freepik.com/free-photo/blue-gradient-abstract-background-empty-room-with-space-your-text-picture_1258-66830.jpg?w=826&t=st=1702924978~exp=1702925578~hmac=299247af9223c23f5f1dd7ab3532739700b6c6e0e4eccba1db68f074629d7d9b');
+    background-size: cover;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+/* Left Menu Bar ------------------------------------------------------------ */
+
+/* .left-menu-bar-section {
+	border: 1px solid black;
+} */
+
+
+.section-icon-box {
+	margin-bottom: 7px;
+}
+
+.form-header p {
+    font-size: 14px;
+}
+
+.section-icon-box img {
+	width: 25%;
+	margin: 0 auto;
+	display: flex;
+}
+
+.section-title-box h5 {
+    font-size: 13px;
+    font-weight: 400 !important;
+    margin-top: 10px;
+    color: dimgray;
+}
+
+.section-tab-box {
+    padding: 15px 0px;
+    width: 85%;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 2px solid #6969691c;
+    margin: 0 auto;
+    margin-bottom: 9px;
+    background: white;
+}
+
+.active-section-tab{
+  border: 2px solid rgba(0, 0, 0, 0.384);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.active-section-tab h5{
+	color:black ;
+}
+
+.form-input-box {
+	display: flex;
+	flex-direction: column;
+	margin: 6px 5px;
+	margin-bottom: 10px;
+}
+.form-input-box label {
+    margin-bottom: 4px;
+    font-size: 14px;
+    color: #000000eb;
+    font-weight: 500;
+}
+
+.form-input-box input {
+	padding: 7px 15px;
+	border-radius: 7px;
+	border: none;
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.form-input-box input::placeholder {
+	font-size: 13px;
+	color: dimgray;
+}
+.main-form-cover-wrapper {
+    border-radius: 10px;
+    margin-left: 30px;
+    min-height: 320px;
+    
+}
+.form-main-cover {
+    border: 1px solid #00000021;
+    padding: 15px 20px;
+    background: white;
+    border-radius: 10px;
+}
+
+.chips_box {
+	display: flex;
+}
+.chips_box button {
+	background: transparent;
+	border: none;
+}
+.chips_box button img {
+	width: 20px;
+	margin-left: 10px;
+}
+.chips_box {
+	display: flex;
+	align-items: center;
+	border: 1px solid #00000030;
+	padding: 5px 10px;
+	border-radius: 24px;
+	margin-right: 10px;
+}
+.chips_box h6 {
+	font-size: 15px;
+	font-weight: 400;
+}
+.submit-btn-box {
+	margin-top: 20px;
+	margin-left: 7px;
+}
+.submit-btn-box button {
+    padding: 7px 22px;
+    border-radius: 7px;
+    border: none;
+    background-color: #2d1cf9;
+    font-size: 12px;
+    color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.submit-btn-box button:active {
+	transform: translateY(2px);
+	transition: transform 3s ease-in;
+}
+
+/* -----Skills */
+.form-input-box.skill-input span input {
+    width: 100%;
+    padding: 10px;
+    background: white;
+}
+
+.left-menu-tab-box h4 {
+    font-size: 18px;
+}
+.left-menu-tab-box p {
+    font-size: 12px;
+}
+
+.left-menu-bar-section {
+    margin-left: 15px;
+    margin-right: -15px;
+}
+
+.form-input-box input::placeholder {
+    color: #696969b0;
+    font-size: 12px;
+}
+
+/* Resume Setting --------------- */
+.template-option {
+    border: 1px solid #69696921;
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 47%;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    background: white;
+}
+
+.resume-setting-main-wrapper {
+    width: 80%;
+}
+.template-setting-header h6 {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.template-option img {
+    width: 30px;
+    margin: 0 auto;
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.template-option h6 {
+    font-size: 14px;
+}
+
+.settings-main-cover-wrapper {
+    margin-left: 16px;
+}
+
+.resume-setting-header p {
+    font-size: 13px;
+    color: dimgray;
+}
+
+.template-option h6 {
+    font-size: 13px;
+    color: dimgray;
+    font-weight: 400;
+}
+
+.template-options-box-cover {
+    flex-wrap: wrap;
+}
+.resume-setting-header h4 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.form-header h6 {
+    margin-bottom: 6px;
+}
+.form-header p {
+    font-size: 13px;
+    color: dimgray;
+}
+.modal-content {
+    width: 900px;
+}
+
+.custom-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
+
+.templates-box img {
+    width: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.modal-content {
+    width: 900px;
+    margin-left: -30px;
 }
 
-.App-link {
-  color: #61dafb;
+.templates-box {
+    width: 30%;
+    border: 1px solid rgba(105, 105, 105, 0.466);
+    padding-bottom: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 0 0 rgba(0, 123, 255, 0);
+    position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.templates-box:hover {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3); /* Blue box shadow on hover */
+}
+
+.selected-img-box img {
+    width: 25px;
+}
+
+.selected-img-box {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+}
+
+.selected-template {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.795); /* Highlighted box shadow for the selected template */
+    border:1px solid rgba(105, 105, 105, 0.726);
+}
+
+.selected-template-img-box {
+    width: 75px;
+    height: 75px;
+    border: 1px solid #0000005c;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.selected-template-box {
+    padding: 15px;
+    border: 1px solid #69696991;
+    margin: 10px 0px;
+    text-align: center;
+    border-radius: 13px;
+    background: white;
+}
+.selected-template-box p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+button.change-template-button {
+    padding: 5px 9px;
+    font-size: 13px;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 7px;
+    border: none;
+    background-color: #2d1cf9;
+    font-size: 12px;
+    color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.selected-template-img-box img {
+    width: 125%;
+}
+
+.download-pdf-drop-down.dropdown button {
+    background: no-repeat;
+    color: dimgray;
+    font-size: 13px;
+    padding: 0px;
+    border: none;
+}
+
+/* Pdf Css Starts------------------------------ */
+.pdf-modal-main-wrapper .modal-body {
+    padding: 0px;
+}
+
+.pdf-modal-main-wrapper .modal-content {
+    width: 1000px;
+    margin-left: -65px;
+}
+
+p.error-message {
+    font-size: 13px;
+    color: red;
+    margin-bottom: 0px;
+    margin-top: 5px;
 }
