@@ -14,6 +14,6 @@ export const TemplateData = [
   {
     id: 3,
     img: Template1,
-    name: "Clean and Simple"
+    name: "Clean and Simple "
   }
 ];
