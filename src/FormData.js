@@ -26,7 +26,7 @@ const Maininformation = {
         
     },
     Skills : {},
-    Achievemenst : {}
+    Achievements : {}
     
 }
 

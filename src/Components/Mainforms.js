@@ -7,11 +7,13 @@ import BasicInfo from "../Forms/BasicInfo";
 import WorkExp from "../Forms/WorkExp";
 import TagsInput from "react-tagsinput";
 import "react-tagsinput/react-tagsinput.css";
+import HeaderStrip from "./HeaderStrip";
+import Education from "../Forms/Education";
 
 import deletechipimg from "../Assets/delete_chip_btn.png";
 import FormHeader from "./FormHeader";
 
-const Mainforms = () => {
+const Mainforms = ({ userData, userId }) => {
   const {
     register,
     control,
@@ -25,7 +27,7 @@ const Mainforms = () => {
           degree: "",
           degreestartDate: "",
           degreeEnddate: "",
-          degreegrade: "" ,
+          degreegrade: "",
         },
       ],
       projects: [
@@ -46,168 +48,6 @@ const Mainforms = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-  };
-
-  useEffect(() => {
-    console.log(errors?.educations);
-  }, [errors]);
-
-  const Education = ({ register, handleSubmit, errors }) => {
-    console.log(errors);
-    return (
-      <div className="form-main-cover">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          {fields.map((item, index) => {
-            return (
-              <div key={index}>
-                <div className="row">
-                  <div className="col-lg-6">
-                    <div className="form-input-box">
-                      <label htmlFor={`educations[${index}].college`}>
-                        College
-                      </label>
-                      <input
-                        type="text"
-                        id={`educations[${index}].college`}
-                        placeholder="Enter College Name"
-                        {...register(`educations[${index}].college`, {
-                          required: "College is required",
-                          // Add other validation rules and messages as needed
-                        })}
-                        defaultValue={item.college}
-                      />
-                      {errors && errors.educations[index].college && (
-                          <p className="error-message">
-                            {errors.educations[index].college.message}
-                          </p>
-                        )}
-                    </div>
-                  </div>
-
-                  <div className="col-lg-6">
-                    <div className="form-input-box">
-                      <label htmlFor={`educations[${index}].degree`}>
-                        Degree
-                      </label>
-                      <input
-                        type="text"
-                        id={`educations[${index}].degree`}
-                        placeholder="Enter Degree"
-                        {...register(`educations[${index}].degree`, {
-                          required: "Degree is required",
-                          // Add other validation rules and messages as needed
-                        })}
-                        defaultValue={item.degree}
-                      />
-                      {errors[`educations[${index}].degree`] && (
-                        <span>
-                          {errors[`educations[${index}].degree`].message}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="col-lg-6">
-                    <div className="form-input-box">
-                      <label htmlFor={`educations[${index}].degreestartDate`}>
-                        Start date
-                      </label>
-                      <input
-                        type="date"
-                        id={`educations[${index}].degreestartDate`}
-                        placeholder="Enter Start Date"
-                        {...register(`educations[${index}].degreestartDate`, {
-                          required: "Start date is required",
-                          // Add other validation rules and messages as needed
-                        })}
-                        defaultValue={item.degreestartDate}
-                      />
-                      {errors[`educations[${index}].degreestartDate`] && (
-                        <span>
-                          {
-                            errors[`educations[${index}].degreestartDate`]
-                              .message
-                          }
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="col-lg-6">
-                    <div className="form-input-box">
-                      <label htmlFor={`educations[${index}].degreeEnddate`}>
-                        End date
-                      </label>
-                      <input
-                        type="date"
-                        id={`educations[${index}].degreeEnddate`}
-                        placeholder="Enter End Date"
-                        {...register(`educations[${index}].degreeEnddate`, {
-                          required: "End date is required",
-                          // Add other validation rules and messages as needed
-                        })}
-                        defaultValue={item.degreeEnddate}
-                      />
-                      {errors[`educations[${index}].degreeEnddate`] && (
-                        <span>
-                          {errors[`educations[${index}].degreeEnddate`].message}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="col-lg-6">
-                    <div className="form-input-box">
-                      <label htmlFor={`educations[${index}].degreegrade`}>
-                        Grade
-                      </label>
-                      <input
-                        type="text"
-                        id={`educations[${index}].degreegrade`}
-                        placeholder="Enter Grade"
-                        {...register(`educations[${index}].degreegrade`, {
-                          required: "Grade is required",
-                          // Add other validation rules and messages as needed
-                        })}
-                        defaultValue={item.degreegrade}
-                      />
-                      {errors[`educations[${index}].degreegrade`] && (
-                        <span>
-                          {errors[`educations[${index}].degreegrade`].message}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-                <button type="button" onClick={() => remove(index)}>
-                  Remove
-                </button>
-              </div>
-            );
-          })}
-
-          <button
-            className="Add-more"
-            onClick={() =>
-              append({
-                college: "",
-                degree: "",
-                degreestartDate: "",
-                degreeEnddate: "",
-                degreegrade: "",
-              })
-            }
-          >
-            Add More
-          </button>
-          <div className="submit-btn-box">
-            <button className="submit-btn" type="submit">
-              Save
-            </button>
-          </div>
-        </form>
-      </div>
-    );
   };
 
   const Projects = () => {
@@ -317,6 +157,7 @@ const Mainforms = () => {
             register={register}
             handleSubmit={handleSubmit}
             errors={errors}
+            userId={userId}
           />
         );
       case Resumesections.WorkExp:
@@ -327,6 +168,10 @@ const Mainforms = () => {
             register={register}
             handleSubmit={handleSubmit}
             errors={errors}
+            fields={fields}
+            append={append}
+            remove={remove}
+            onSubmit={onSubmit}
           />
         );
       case Resumesections.Projects:
@@ -338,12 +183,10 @@ const Mainforms = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(errors);
-  }, [errors]);
   return (
     <>
       <div className="main-form-cover-wrapper-box">
+        <HeaderStrip userData={userData} />
         <FormHeader />
         <div className="form-box-cover">{activeform()}</div>
       </div>

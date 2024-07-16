@@ -1,13 +1,46 @@
-import React from "react";
-import InputControl from "../Components/smallComponents/InputControll";
-import { useForm } from "react-hook-form"; 
+import React, { useContext } from "react";
+import { postRequestOptions, SAVEINFOAPI } from "../constants";
+import { toast , Toaster } from 'react-hot-toast';
+import { AppContext } from "../ContextApi";
+import Maininformation from "../FormData";
 
 
-const BasicInfo = ({ register, handleSubmit, errors }) => {
+
+const BasicInfo = ({ register, handleSubmit, errors, userId }) => {
+
+  const {sectactivetab } = useContext(AppContext)
+
+  const saveInfo = async (data) => {
+    const infoData = {
+      userId: userId,
+      fullName: data.fullName,
+      email: data.email,
+      mobile: data.mobile,
+      linkedLink: data.linkedLink,
+      githubLink: data.githubLink,
+      portfolioLink: data.portfolioLink
+    }
+
+    postRequestOptions.body = JSON.stringify(infoData)
+    try {
+      const response = await fetch(`http://localhost:3000/${SAVEINFOAPI}?userId=${userId}`, postRequestOptions)
+      if (!response.ok) {
+        const errorResponse = await response.json()
+        toast.error(errorResponse.msg)
+        return
+      }
+      const res = await response.json()
+      toast.success(res.msg)
+      sectactivetab(Object.keys(Maininformation)[1])
+  } catch (error) {
+      console.log(error)
+    }
+  }
+
   const onSubmit = (data) => {
-    console.log(data);
+    saveInfo(data);
   };
-  
+
   return (
     <>
       <div className="form-main-cover">
@@ -20,17 +53,17 @@ const BasicInfo = ({ register, handleSubmit, errors }) => {
                   type="text"
                   placeholder="Enter FullName"
                   name="Fullname"
-                  {...register("fullname", {
+                  {...register("fullName", {
                     required: "please enter fullname ",
                     // Add additional validation rules as needed
                   })}
                 />
-                
-                {errors && errors.fullname && (
-                  <p className="error-message">{errors.fullname.message}</p>
+
+                {errors && errors.fullName && (
+                  <p className="error-message">{errors.fullName.message}</p>
                 )}
                 {/* {console.log(errors.fullname)} */}
-                
+
               </div>
             </div>
             <div className="col-lg-6">
@@ -48,7 +81,7 @@ const BasicInfo = ({ register, handleSubmit, errors }) => {
                     },
                   })}
                 />
-                
+
                 {errors && errors.mobile && (
                   <p className="error-message">{errors.mobile.message}</p>
                 )}
@@ -80,8 +113,8 @@ const BasicInfo = ({ register, handleSubmit, errors }) => {
                 <input
                   type="text"
                   placeholder="Enter Linkedin"
-                  name="Linkedin"
-                  {...register("Linkedin")}
+                  name="linkedinLink"
+                  {...register("linkedinLink")}
                 />
               </div>
             </div>
@@ -91,8 +124,8 @@ const BasicInfo = ({ register, handleSubmit, errors }) => {
                 <input
                   type="text"
                   placeholder="Enter Github"
-                  name="Github"
-                  {...register("Github")}
+                  name="githubLink"
+                  {...register("githubLink")}
                 />
               </div>
             </div>
@@ -102,8 +135,8 @@ const BasicInfo = ({ register, handleSubmit, errors }) => {
                 <input
                   type="text"
                   placeholder="Enter Portfolio"
-                  name="Portfolio"
-                  {...register("Portfolio")}
+                  name="portfolioLink"
+                  {...register("portfolioLink")}
                 />
               </div>
             </div>
@@ -114,6 +147,7 @@ const BasicInfo = ({ register, handleSubmit, errors }) => {
             </button>
           </div>
         </form>
+        <Toaster />
       </div>
     </>
   );

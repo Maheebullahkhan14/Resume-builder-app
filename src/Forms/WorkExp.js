@@ -61,6 +61,9 @@ const WorkExp = ({ register, handleSubmit }) => {
             </div>
           </div>
           <div className="submit-btn-box">
+            <button className="add-more">
+              Add More
+            </button>
             <button className="submit-btn" type="submit">
              Save
             </button>

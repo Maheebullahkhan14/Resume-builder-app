@@ -8,6 +8,8 @@ import sectionIcon5 from "./skills-icon.svg";
 import previewIcon from "./preview-resume-icon.svg";
 import downloadPdfIcon from "./download-pdf-icon.svg"
 import fontsIcon from "./fonts-icon.svg"
+import MainLogo from './cv-logo.png'
+import logoutIcon from './Logout-icon.jpg'
 
 export {
   Template1,
@@ -17,5 +19,5 @@ export {
   sectionIcon3,
   sectionIcon4,
   sectionIcon5,
-  downloadPdfIcon , previewIcon , fontsIcon
+  downloadPdfIcon , previewIcon , fontsIcon , MainLogo , logoutIcon
 };

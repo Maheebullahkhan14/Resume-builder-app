@@ -4,6 +4,10 @@ import Maincontainer from "./Components/Maincontainer";
 import { AppContext } from "./ContextApi";
 import { useState, useEffect } from "react";
 import Maininformation from "./FormData";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import { Routes , Router, Route } from "react-router-dom";
+
 
 function App() {
 
@@ -15,7 +19,8 @@ function App() {
     // Summary : "Summary", 
     Education : "Education",
     Projects : "Projects" ,
-    Skills : "Skills"
+    Skills : "Skills",
+    Achievements : 'Achievements'
   }
   
   return (
@@ -23,7 +28,11 @@ function App() {
     value={{Resumesections , Maininformation , sectactivetab ,activetabsection}}
     >
       <div className="App">
-        <Maincontainer />
+        <Routes>
+          <Route  path="/dashboard" element={<Maincontainer/>}></Route>
+          <Route  path="/register" element={<Register/>}></Route>
+          <Route  path="/" element={<Login/>}></Route>
+        </Routes>
       </div>
     </AppContext.Provider>
   );

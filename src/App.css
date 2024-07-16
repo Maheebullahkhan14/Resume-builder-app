@@ -23,12 +23,10 @@ body{
     background-repeat: no-repeat;
     border-radius: 25px;
     /* border: 1px solid dimgray; */
-    width: 92%;
+    width: 99%;
     margin: 0 auto;
     padding: 20px 15px;
-    margin-top: 20px;
-    /* background: url('https://img.freepik.com/free-vector/low-poly-white-subtle-colors-background_1017-33838.jpg?w=826&t=st=1702924299~exp=1702924899~hmac=c20d9068ef57f91974d0e199d57b42a756cb8657c61b3b57892a0fadb7799544');
-    background: url('https://img.freepik.com/free-photo/vivid-blurred-colorful-wallpaper-background_58702-3767.jpg?w=740&t=st=1702924930~exp=1702925530~hmac=89607ad2cfc60fc222d554c4791023f381e4ea4bc2aaef5a48531994e8ea84fd'); */
+    margin-top: 9px;
     background: url('https://img.freepik.com/free-photo/blue-gradient-abstract-background-empty-room-with-space-your-text-picture_1258-66830.jpg?w=826&t=st=1702924978~exp=1702925578~hmac=299247af9223c23f5f1dd7ab3532739700b6c6e0e4eccba1db68f074629d7d9b');
     background-size: cover;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -40,44 +38,60 @@ body{
 } */
 
 
-.section-icon-box {
-	margin-bottom: 7px;
-}
 
 .form-header p {
     font-size: 14px;
 }
 
 .section-icon-box img {
-	width: 25%;
-	margin: 0 auto;
-	display: flex;
+    width: 25px;
+    /* margin: 0 auto; */
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
 }
-
 .section-title-box h5 {
     font-size: 13px;
     font-weight: 400 !important;
-    margin-top: 10px;
     color: dimgray;
 }
 
 .section-tab-box {
-    padding: 15px 0px;
-    width: 85%;
+    padding: 5px 0px;
     cursor: pointer;
     border-radius: 8px;
-    border: 2px solid #6969691c;
+    /* border: 2px solid #6969691c; */
     margin: 0 auto;
     margin-bottom: 9px;
-    background: white;
+    /* background: white; */
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
 }
 
-.active-section-tab{
-  border: 2px solid rgba(0, 0, 0, 0.384);
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+.section-tab-box.active-section-tab .section-icon-box img {
+    background: #f5f3f5;
+    border-radius: 50%;
+    border: 1px solid #696969d6;
+    padding: 2px;
+    padding: 5px 6px;
+    width: 34px;
+    margin-left: 8px !important;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
-.active-section-tab h5{
-	color:black ;
+
+.active-section-tab {
+    border: 2px solid rgba(0, 0, 0, 0.384);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background: white;
+    border-radius: 30px;
+    margin-left: 0px;
+}
+.active-section-tab h5 {
+    color: black;
+    font-weight: 500 !important;
+    font-size: 16px;
 }
 
 .form-input-box {
@@ -171,9 +185,19 @@ body{
     font-size: 12px;
 }
 
+
+.main-form-cover-wrapper-box {
+    width: 98%;
+    margin-left: 10px;
+}
 .left-menu-bar-section {
-    margin-left: 15px;
-    margin-right: -15px;
+    margin-left: -1px;
+    background: white;
+    margin-right: 24px;
+    width: 117%;
+    padding: 10px 22px;
+    border-radius: 17px;
+    height: 92vh;
 }
 
 .form-input-box input::placeholder {
@@ -354,3 +378,91 @@ p.error-message {
     margin-bottom: 0px;
     margin-top: 5px;
 }
+
+span.error-msg {
+    color: red;
+    font-size: 13px;
+}
+
+.register-cover-main-wrapper.login-main-cover-wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+form.form-content-cover-wrapper .form-group {
+    margin-bottom: 20px;
+}
+
+form.form-content-cover-wrapper .form-group label {
+    margin-bottom: 3px;
+}
+
+.logo-box img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.logo-box span {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.logo-box {
+    margin-bottom: 30px;
+}
+
+
+.form-header {
+    width: 60%;
+}
+
+.form-header h6 {
+    color: white;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    font-size: 23px;
+}
+
+.form-header p {
+    color: #ffffffde;
+    margin-top: 11px;
+}
+
+.form-header-details {
+    padding: 20px 25px;
+    border-radius: 15px;
+    background-image: url('./Assets/HeroBg.png');
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 15px;
+    padding-bottom: 7px;
+    }
+
+    .logout-card-cover {
+        margin: 0 auto;
+        margin-top: 37px;
+        border-radius: 10px;
+        padding: 10px;
+        display: flex;
+        width: 112%;
+        justify-content: center;
+        margin-left: -10px;
+        background: #edf8fe;
+    }
+
+    .logut-btn-box button {
+        margin-top: 20px;
+        padding: 7px 24px;
+        border-radius: 7px;
+        background: darkslateblue;
+        color: white;
+        font-size: 14px;
+        border: none;
+    }
+
+    .logout-card-box img {
+        width: 120px;
+    }

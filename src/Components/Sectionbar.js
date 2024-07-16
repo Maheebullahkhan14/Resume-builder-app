@@ -1,12 +1,14 @@
 import React, { useContext, useState } from "react";
 import info_icon from "../Assets/info_icon.png";
 import { AppContext } from "../ContextApi";
+import { IoIosLogOut } from "react-icons/io";
+
 import {
   sectionIcon1,
   sectionIcon2,
   sectionIcon3,
   sectionIcon4,
-  sectionIcon5,
+  sectionIcon5, MainLogo , logoutIcon
 } from "../Assets";
 
 const Sectionbar = () => {
@@ -22,17 +24,21 @@ const Sectionbar = () => {
   return (
     <div className="left-menu-bar-main-cover">
       <div className="left-menu-tab-box-cover">
+        <div className="logo-box">
+          <img src={MainLogo} alt='CV logo' ></img>
+          <span>Cv Maker</span>
+        </div>
         <div className="left-menu-tab-box">
-          <div className="section-header">
+          {/* <div className="section-header">
             <h4 className="left-menu-headings">Sections</h4>
             <p className="left-menu-description">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </p>
-          </div>
+          </div> */}
 
           <div className="row">
             {Object.keys(Resumesections).map((item, idx) => (
-              <div className="col-lg-6 p-0">
+              <div className="col-lg-12 p-0">
                 <div
                   className={
                     "section-tab-box" +
@@ -53,6 +59,14 @@ const Sectionbar = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+        <div className="logout-card-cover">
+          <div className="logout-card-box">
+              <img src={logoutIcon}></img>
+              <div className="logut-btn-box">
+                <button><span><IoIosLogOut / ></span> Logout</button>
+              </div>
           </div>
         </div>
       </div>
