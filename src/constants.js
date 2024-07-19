@@ -9,6 +9,8 @@ export const getRequestOptions = {
     method: 'GET'
 };
 
+export const PROJECTS_VAR = "Projects"
+
 // /-------------APIS----------------------------
 
 export const MODULESAPI = 'api/getsavemodules'

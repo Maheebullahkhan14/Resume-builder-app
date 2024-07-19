@@ -9,8 +9,11 @@ import TagsInput from "react-tagsinput";
 import "react-tagsinput/react-tagsinput.css";
 import HeaderStrip from "./HeaderStrip";
 import Education from "../Forms/Education";
+import { PROJECTS_VAR } from "../constants";
+import { MODULESAPI } from "../constants";
+import { getRequestOptions } from "../constants";
+import toast from "react-hot-toast";
 
-import deletechipimg from "../Assets/delete_chip_btn.png";
 import FormHeader from "./FormHeader";
 
 const Mainforms = ({ userData, userId }) => {
@@ -18,6 +21,7 @@ const Mainforms = ({ userData, userId }) => {
     register,
     control,
     handleSubmit,
+    reset ,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -43,6 +47,7 @@ const Mainforms = ({ userData, userId }) => {
   const { fields, append, remove } = useFieldArray({
     control,
     name: "educations",
+    name : "projects"
   });
   const { activetabsection, Resumesections } = useContext(AppContext);
 
@@ -51,9 +56,11 @@ const Mainforms = ({ userData, userId }) => {
   };
 
   const Projects = () => {
+    const projectKey = Object.keys(userSavedData).find((data) => data === PROJECTS_VAR)
     return (
       <div className="form-main-cover">
         <form onSubmit={handleSubmit(onSubmit)}>
+
           {fields.map((item, index) => {
             return (
               <>
@@ -99,9 +106,11 @@ const Mainforms = ({ userData, userId }) => {
                     />
                   </div>
                 </div>
-                <button type="button" onClick={() => remove(index)}>
-                  Remove
-                </button>
+                {index > 0 && (
+                  <button type="button" onClick={() => remove(index)}>
+                    Remove
+                  </button>
+                )}
               </>
             );
           })}
@@ -182,6 +191,39 @@ const Mainforms = ({ userData, userId }) => {
         return null;
     }
   };
+
+  const [userSavedData, setUserSavedData] = useState([])
+
+  const getSavedModules = async () => {
+    try {
+      const response = await fetch(`http://localhost:3000/${MODULESAPI}?userId=${userId}`, getRequestOptions)
+      if (!response.ok) {
+        const errorResponse = await response.json()
+        toast.error(errorResponse.msg)
+        return
+      }
+      const res = await response.json();
+      setUserSavedData(res?.savedModules)
+      const projectKey = Object.keys(res?.savedModules).find((data) => data === PROJECTS_VAR)
+      reset({
+        projects: res?.savedModules[projectKey]?.projectData
+      });
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    if (userSavedData) {
+      const projectKey = Object.keys(userSavedData).find((data) => data === PROJECTS_VAR)
+      console.log(userSavedData[projectKey])
+    }
+    
+  }, [userSavedData])
+
+  useEffect(() =>{
+    getSavedModules()
+  },[userId])
 
   return (
     <>

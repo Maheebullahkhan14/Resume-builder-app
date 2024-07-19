@@ -12,6 +12,7 @@ import { Routes , Router, Route } from "react-router-dom";
 function App() {
 
   const [activetabsection ,sectactivetab] = useState(Object.keys(Maininformation)[0])
+  const [savedModulesData , setSaveModulesData] = useState([])
 
   const Resumesections = {
     Basicinfo : "Basicinfo",
@@ -25,7 +26,7 @@ function App() {
   
   return (
     <AppContext.Provider
-    value={{Resumesections , Maininformation , sectactivetab ,activetabsection}}
+    value={{Resumesections , Maininformation , sectactivetab ,activetabsection , setSaveModulesData , savedModulesData}}
     >
       <div className="App">
         <Routes>
