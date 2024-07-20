@@ -125,11 +125,10 @@ body{
 }
 .form-main-cover {
     border: 1px solid #00000021;
-    padding: 15px 20px;
+    padding: 16px 27px;
     background: white;
-    border-radius: 10px;
+    border-radius: 25px;
 }
-
 .chips_box {
 	display: flex;
 }
@@ -465,4 +464,71 @@ form.form-content-cover-wrapper .form-group label {
 
     .logout-card-box img {
         width: 120px;
+    }
+
+    button.remove-form-btn {
+        border-radius: 50%;
+        background: darkslateblue;
+        color: white;
+        font-weight: 700;
+        width: 25px;
+        height: 25px;
+        border: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    form.resume-form-main-cover-wrapper {
+        position: relative;
+        padding-top: 8px;
+    }
+
+
+
+    button.remove-form-btn svg {
+        font-size: 18px;
+        margin-top: -1px;
+    }
+
+    .resume-form-main-cover-wrapper {
+        position: relative;
+        border-bottom: 2px dashed #6969695c;
+        padding-bottom: 35px;
+        margin-bottom: 20px;
+        padding-top: 10px;
+    }
+
+    .form-footer-btn-cover {
+        margin-top: -56px;
+        align-items: baseline;
+        position: relative;
+        z-index: 9999999999;
+    }
+    
+    button.Add-more-form-btn {
+        padding: 4px 22px;
+        border-radius: 20px;
+        background: darkslateblue;
+        color: white;
+        border: none;
+        font-size: 14px;
+    }
+
+    button.Add-more-form-btn span svg {
+        font-size: 22px;
+        margin-left: -14px;
+        margin-right: 5px;
+    }
+
+    .submit-btn-box button {
+        border-radius: 24px;
+        background: darkslateblue;
+    }
+
+    .submit-btn-box .submit-btn span svg {
+        font-size: 16px;
+        margin-left: -10px;
+        margin-right: 5px;
+        margin-top: -5px;
     }

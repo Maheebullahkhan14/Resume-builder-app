@@ -9,6 +9,7 @@ import TagsInput from "react-tagsinput";
 import "react-tagsinput/react-tagsinput.css";
 import HeaderStrip from "./HeaderStrip";
 import Education from "../Forms/Education";
+import Projects from "../Forms/Projects";
 import { PROJECTS_VAR } from "../constants";
 import { MODULESAPI } from "../constants";
 import { getRequestOptions } from "../constants";
@@ -21,7 +22,8 @@ const Mainforms = ({ userData, userId }) => {
     register,
     control,
     handleSubmit,
-    reset ,
+    reset,
+    getValues,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -36,10 +38,10 @@ const Mainforms = ({ userData, userId }) => {
       ],
       projects: [
         {
-          Title: "",
+          title: "",
           description: "",
           link: "",
-          EndOfProjectDate: "",
+          endDate: "",
         },
       ],
     },
@@ -47,95 +49,18 @@ const Mainforms = ({ userData, userId }) => {
   const { fields, append, remove } = useFieldArray({
     control,
     name: "educations",
-    name : "projects"
   });
+
+
+  const { fields: projectFields, append: appendProject, remove: removeProject } = useFieldArray({
+    control,
+    name: "projects",
+  });
+
   const { activetabsection, Resumesections } = useContext(AppContext);
 
   const onSubmit = (data) => {
     console.log(data);
-  };
-
-  const Projects = () => {
-    const projectKey = Object.keys(userSavedData).find((data) => data === PROJECTS_VAR)
-    return (
-      <div className="form-main-cover">
-        <form onSubmit={handleSubmit(onSubmit)}>
-
-          {fields.map((item, index) => {
-            return (
-              <>
-                <div className="row">
-                  <div className="col-lg-6">
-                    <InputControl
-                      type="text"
-                      label="Title"
-                      placeholder="Enter project title"
-                      name={`projects[${index}].Title`}
-                      register={register}
-                      defaultValue={item.Title}
-                    />
-                  </div>
-                  <div className="col-lg-6">
-                    <InputControl
-                      type="text"
-                      label="Description"
-                      placeholder="Enter project description"
-                      name={`projects[${index}].description`}
-                      register={register}
-                      defaultValue={item.description}
-                    />
-                  </div>
-                  <div className="col-lg-6">
-                    <InputControl
-                      type="text"
-                      label="Link"
-                      placeholder="project link"
-                      name={`projects[${index}].link`}
-                      register={register}
-                      defaultValue={item.link}
-                    />
-                  </div>
-                  <div className="col-lg-6">
-                    <InputControl
-                      type="date"
-                      label="End date"
-                      placeholder="Enter profession"
-                      name={`projects[${index}].degreeEnddate`}
-                      register={register}
-                      defaultValue={item.degreeEnddate}
-                    />
-                  </div>
-                </div>
-                {index > 0 && (
-                  <button type="button" onClick={() => remove(index)}>
-                    Remove
-                  </button>
-                )}
-              </>
-            );
-          })}
-          <button
-            className="Add-more"
-            onClick={() =>
-              append({
-                college: "",
-                degree: "",
-                degreestartDate: "",
-                degreeEnddate: "",
-                degreegrade: "",
-              })
-            }
-          >
-            Add More
-          </button>
-          <div className="submit-btn-box">
-            <button className="submit-btn" type="submit">
-              Save
-            </button>
-          </div>
-        </form>
-      </div>
-    );
   };
 
   const Skills = () => {
@@ -158,7 +83,6 @@ const Mainforms = ({ userData, userId }) => {
   };
 
   const activeform = () => {
-    // console.log(allCollegeData)
     switch (Resumesections[activetabsection]) {
       case Resumesections.Basicinfo:
         return (
@@ -184,7 +108,7 @@ const Mainforms = ({ userData, userId }) => {
           />
         );
       case Resumesections.Projects:
-        return <Projects />;
+        return <Projects register={register} projectFields={projectFields} handleSubmit={handleSubmit} errors={errors} appendProject={appendProject} removeProject={removeProject} />;
       case Resumesections.Skills:
         return <Skills />;
       default:
@@ -216,14 +140,21 @@ const Mainforms = ({ userData, userId }) => {
   useEffect(() => {
     if (userSavedData) {
       const projectKey = Object.keys(userSavedData).find((data) => data === PROJECTS_VAR)
-      console.log(userSavedData[projectKey])
-    }
-    
-  }, [userSavedData])
+      const educationKey = Object.keys(userSavedData).find((data) => data === 'educations');
 
-  useEffect(() =>{
+      const defaultValues = {
+        educations: userSavedData[educationKey] || [{ college: "", degree: "", degreestartDate: "", degreeEnddate: "", degreegrade: "" }],
+        projects: userSavedData[projectKey] && userSavedData[projectKey][0]?.projectData || [{ Title: "", description: "", link: "", endDate: "" }]
+      };
+
+      reset(defaultValues);
+    }
+
+  }, [userSavedData, reset])
+
+  useEffect(() => {
     getSavedModules()
-  },[userId])
+  }, [userId])
 
   return (
     <>
