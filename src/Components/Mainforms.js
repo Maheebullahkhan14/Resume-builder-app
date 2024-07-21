@@ -10,10 +10,11 @@ import "react-tagsinput/react-tagsinput.css";
 import HeaderStrip from "./HeaderStrip";
 import Education from "../Forms/Education";
 import Projects from "../Forms/Projects";
-import { PROJECTS_VAR } from "../constants";
+import { PROJECTS_VAR, EDUCATION_VAR, BASICINFO_VAR, WORKEXPINFO_VAR } from "../constants";
 import { MODULESAPI } from "../constants";
 import { getRequestOptions } from "../constants";
 import toast from "react-hot-toast";
+import { formatDate } from "../utils";
 
 import FormHeader from "./FormHeader";
 
@@ -27,6 +28,13 @@ const Mainforms = ({ userData, userId }) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
+      basicinfo: [{
+        fullName: "",
+        email: "",
+        githubLink: "",
+        linkedinLink: "",
+        mobile: ""
+      }],
       educations: [
         {
           college: "",
@@ -44,17 +52,32 @@ const Mainforms = ({ userData, userId }) => {
           endDate: "",
         },
       ],
+      workexp: [
+        {
+          company: "",
+          startDate: "",
+          endDate: "",
+          role: "",
+          location: "",
+          description: ""
+        }
+      ]
     },
   });
+
   const { fields, append, remove } = useFieldArray({
     control,
     name: "educations",
   });
 
-
   const { fields: projectFields, append: appendProject, remove: removeProject } = useFieldArray({
     control,
     name: "projects",
+  });
+
+  const { fields: workExpFields, append: appendWorkExp, remove: removeWorkExp } = useFieldArray({
+    control,
+    name: "workexp",
   });
 
   const { activetabsection, Resumesections } = useContext(AppContext);
@@ -94,7 +117,7 @@ const Mainforms = ({ userData, userId }) => {
           />
         );
       case Resumesections.WorkExp:
-        return <WorkExp register={register} handleSubmit={handleSubmit} />;
+        return <WorkExp register={register} handleSubmit={handleSubmit} append={appendWorkExp} fields={workExpFields} remove={removeWorkExp} />;
       case Resumesections.Education:
         return (
           <Education
@@ -140,13 +163,32 @@ const Mainforms = ({ userData, userId }) => {
   useEffect(() => {
     if (userSavedData) {
       const projectKey = Object.keys(userSavedData).find((data) => data === PROJECTS_VAR)
-      const educationKey = Object.keys(userSavedData).find((data) => data === 'educations');
-
+      const educationKey = Object.keys(userSavedData).find((data) => data === EDUCATION_VAR);
+      const infoKey = Object.keys(userSavedData).find((data) => data === BASICINFO_VAR);
+      const workexpKey = Object.keys(userSavedData).find((data) => data === WORKEXPINFO_VAR);
       const defaultValues = {
-        educations: userSavedData[educationKey] || [{ college: "", degree: "", degreestartDate: "", degreeEnddate: "", degreegrade: "" }],
-        projects: userSavedData[projectKey] && userSavedData[projectKey][0]?.projectData || [{ Title: "", description: "", link: "", endDate: "" }]
+        educations: userSavedData[educationKey] && userSavedData[projectKey][0]?.educationData || [{ college: "", degree: "", degreestartDate: "", degreeEnddate: "", degreegrade: "" }],
+        projects: userSavedData[projectKey] && userSavedData[projectKey][0]?.projectData || [{ Title: "", description: "", link: "", endDate: "" }],
+        workexp: userSavedData[workexpKey] && userSavedData[workexpKey][0]?.workExpData.map(item => ({
+          ...item,
+          startDate: formatDate(item.startDate),
+          endDate: formatDate(item.endDate)
+        })) || [{
+          company: "",
+          startDate: "",
+          endDate: "",
+          role: "",
+          location: "",
+          description: ""
+        }],
+        basicinfo: userSavedData[infoKey] && userSavedData[infoKey][0] || [{
+          fullName: "",
+          email: "",
+          githubLink: "",
+          linkedinLink: "",
+          mobile: ""
+        }]
       };
-
       reset(defaultValues);
     }
 

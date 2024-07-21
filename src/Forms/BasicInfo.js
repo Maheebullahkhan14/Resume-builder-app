@@ -52,10 +52,8 @@ const BasicInfo = ({ register, handleSubmit, errors, userId }) => {
                 <input
                   type="text"
                   placeholder="Enter FullName"
-                  name="Fullname"
-                  {...register("fullName", {
-                    required: "please enter fullname ",
-                    // Add additional validation rules as needed
+                  {...register("basicinfo.fullName", {
+                    required: "Please enter fullname"
                   })}
                 />
 
@@ -73,7 +71,7 @@ const BasicInfo = ({ register, handleSubmit, errors, userId }) => {
                   type="text"
                   placeholder="Enter mobile no"
                   name="Mobile"
-                  {...register("mobile", {
+                  {...register("basicinfo.mobile", {
                     required: "please enter mobile no",
                     pattern: {
                       value: /^[0-9]{10}$/, // Assuming you want a 10-digit numeric value for a mobile number
@@ -93,8 +91,7 @@ const BasicInfo = ({ register, handleSubmit, errors, userId }) => {
                 <input
                   type="text"
                   placeholder="Enter Email"
-                  name="Email"
-                  {...register("email", {
+                  {...register("basicinfo.email", {
                     required: "please enter email",
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
@@ -113,8 +110,7 @@ const BasicInfo = ({ register, handleSubmit, errors, userId }) => {
                 <input
                   type="text"
                   placeholder="Enter Linkedin"
-                  name="linkedinLink"
-                  {...register("linkedinLink")}
+                  {...register("basicinfo.linkedinLink")}
                 />
               </div>
             </div>
@@ -124,8 +120,7 @@ const BasicInfo = ({ register, handleSubmit, errors, userId }) => {
                 <input
                   type="text"
                   placeholder="Enter Github"
-                  name="githubLink"
-                  {...register("githubLink")}
+                  {...register("basicinfo.githubLink")}
                 />
               </div>
             </div>
@@ -136,7 +131,8 @@ const BasicInfo = ({ register, handleSubmit, errors, userId }) => {
                   type="text"
                   placeholder="Enter Portfolio"
                   name="portfolioLink"
-                  {...register("portfolioLink")}
+                  {...register("basicinfo.portfolioLink")}
+                  // disabled={basicinfo.pro}
                 />
               </div>
             </div>

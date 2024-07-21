@@ -10,6 +10,9 @@ export const getRequestOptions = {
 };
 
 export const PROJECTS_VAR = "Projects"
+export const EDUCATION_VAR = "Education"
+export const BASICINFO_VAR = "Basicinfo"
+export const WORKEXPINFO_VAR = "workExp"
 
 // /-------------APIS----------------------------
 
