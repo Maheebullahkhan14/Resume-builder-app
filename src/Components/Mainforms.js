@@ -167,7 +167,11 @@ const Mainforms = ({ userData, userId }) => {
       const infoKey = Object.keys(userSavedData).find((data) => data === BASICINFO_VAR);
       const workexpKey = Object.keys(userSavedData).find((data) => data === WORKEXPINFO_VAR);
       const defaultValues = {
-        educations: userSavedData[educationKey] && userSavedData[projectKey][0]?.educationData || [{ college: "", degree: "", degreestartDate: "", degreeEnddate: "", degreegrade: "" }],
+        educations: userSavedData[educationKey] && userSavedData[educationKey][0]?.educationData.map(item => ({
+          ...item,
+          startDate: formatDate(item.startDate),
+          endDate: formatDate(item.endDate)
+        })) || [{ college: "", degree: "", degreestartDate: "", degreeEnddate: "", degreegrade: "" }],
         projects: userSavedData[projectKey] && userSavedData[projectKey][0]?.projectData || [{ Title: "", description: "", link: "", endDate: "" }],
         workexp: userSavedData[workexpKey] && userSavedData[workexpKey][0]?.workExpData.map(item => ({
           ...item,

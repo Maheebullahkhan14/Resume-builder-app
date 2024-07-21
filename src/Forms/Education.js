@@ -14,7 +14,7 @@ const Education = ({ register, handleSubmit, errors, onSubmit, fields, append, r
                             <div className="row">
                                 <div className="col-lg-6">
                                     <div className="form-input-box">
-                                        <label htmlFor={`educations[${index}].college`}>
+                                        <label htmlFor={`education[${index}].college`}>
                                             College
                                         </label>
                                         <input
@@ -65,22 +65,22 @@ const Education = ({ register, handleSubmit, errors, onSubmit, fields, append, r
 
                                 <div className="col-lg-6">
                                     <div className="form-input-box">
-                                        <label htmlFor={`educations[${index}].degreestartDate`}>
+                                        <label htmlFor={`educations[${index}].startDate`}>
                                             Start date
                                         </label>
                                         <input
                                             type="date"
-                                            id={`educations[${index}].degreestartDate`}
+                                            id={`educations[${index}].startDate`}
                                             placeholder="Enter Start Date"
-                                            {...register(`educations[${index}].degreestartDate`, {
+                                            {...register(`educations[${index}].startDate`, {
                                                 required: "Start date is required",
                                                 // Add other validation rules and messages as needed
                                             })}
-                                            defaultValue={item.degreestartDate}
+                                            defaultValue={item.startDate}
                                         />
-                                        {errors && errors.educations && errors.educations[index] && errors.educations[index].degreestartDate && (
+                                        {errors && errors.educations && errors.educations[index] && errors.educations[index].startDate && (
                                             <span>
-                                                {errors.educations[index].degreestartDate.message}
+                                                {errors.educations[index].startDate.message}
                                             </span>
                                         )}
                                     </div>
@@ -88,22 +88,22 @@ const Education = ({ register, handleSubmit, errors, onSubmit, fields, append, r
 
                                 <div className="col-lg-6">
                                     <div className="form-input-box">
-                                        <label htmlFor={`educations[${index}].degreeEnddate`}>
+                                        <label htmlFor={`educations[${index}].endDate`}>
                                             End date
                                         </label>
                                         <input
                                             type="date"
-                                            id={`educations[${index}].degreeEnddate`}
+                                            id={`educations[${index}].endDate`}
                                             placeholder="Enter End Date"
-                                            {...register(`educations[${index}].degreeEnddate`, {
+                                            {...register(`educations[${index}].endDate`, {
                                                 required: "End date is required",
                                                 // Add other validation rules and messages as needed
                                             })}
-                                            defaultValue={item.degreeEnddate}
+                                            defaultValue={item.endDate}
                                         />
-                                        {errors && errors.educations && errors.educations[index] && errors.educations[index].degreeEnddate && (
+                                        {errors && errors.educations && errors.educations[index] && errors.educations[index].endDate && (
                                             <span>
-                                                {errors.educations[index].degreeEnddate.message}
+                                                {errors.educations[index].endDate.message}
                                             </span>
                                         )}
                                     </div>
@@ -111,22 +111,22 @@ const Education = ({ register, handleSubmit, errors, onSubmit, fields, append, r
 
                                 <div className="col-lg-6">
                                     <div className="form-input-box">
-                                        <label htmlFor={`educations[${index}].degreegrade`}>
+                                        <label htmlFor={`educations[${index}].grade`}>
                                             Grade
                                         </label>
                                         <input
                                             type="text"
-                                            id={`educations[${index}].degreegrade`}
+                                            id={`educations[${index}].grade`}
                                             placeholder="Enter Grade"
-                                            {...register(`educations[${index}].degreegrade`, {
+                                            {...register(`educations[${index}].grade`, {
                                                 required: "Grade is required",
                                                 // Add other validation rules and messages as needed
                                             })}
-                                            defaultValue={item.degreegrade}
+                                            defaultValue={item.grade}
                                         />
-                                        {errors && errors.educations && errors.educations[index] && errors.educations[index].degreegrade && (
+                                        {errors && errors.educations && errors.educations[index] && errors.educations[index].grade && (
                                             <span>
-                                                {errors.educations[index].degreegrade.message}
+                                                {errors.educations[index].grade.message}
                                             </span>
                                         )}
                                     </div>
