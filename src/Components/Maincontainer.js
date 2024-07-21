@@ -3,20 +3,31 @@ import Sectionbar from "./Sectionbar";
 import Mainforms from "./Mainforms";
 import Resumesetting from "./Resumesetting";
 import { getRequestOptions , MODULESAPI} from "../constants";
+import toast from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 
 
 const Maincontainer = () => {
 
   const [userId, setUserId] = useState(JSON.parse(localStorage.getItem('userId')) || '')
   const [userData , setUserData] = useState([])
+  const [userSavedData , setUserSavedData] = useState([])
 
   const getSavedModules = async () =>{
     try {
-      const response = fetch(`http://localhost:3000/${MODULESAPI}?userId=${userId}` , getRequestOptions)
-      const res = await response.json()
+      const response = await fetch(`http://localhost:3000/${MODULESAPI}?userId=${userId}` , getRequestOptions)
+      if (!response.ok) {
+        const errorResponse = await response.json()
+        toast.error(errorResponse.msg)
+        return
+      }
+      const res = await response.json();
+      setUserSavedData(res?.savedModules)
     } catch (error) {
         console.log(error)
     }
+
+    
   }
 
   useEffect(() => {
@@ -48,7 +59,7 @@ const Maincontainer = () => {
             <div className="col-lg-7 p-0">
               <div className="main-form-cover-wrapper">
                 <div className="main-form-content-box">
-                  <Mainforms userData={userData} userId={userId} />
+                  <Mainforms userSavedData={userSavedData} userData={userData} userId={userId} />
                 </div>
               </div>
             </div>
@@ -59,8 +70,8 @@ const Maincontainer = () => {
             </div>
           </div>
         </div>
-
       </div>
+      <Toaster/>
     </>
   );
 };
