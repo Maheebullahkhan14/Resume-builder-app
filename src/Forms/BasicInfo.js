@@ -13,12 +13,12 @@ const BasicInfo = ({ register, handleSubmit, errors, userId }) => {
   const saveInfo = async (data) => {
     const infoData = {
       userId: userId,
-      fullName: data.fullName,
-      email: data.email,
-      mobile: data.mobile,
-      linkedLink: data.linkedLink,
-      githubLink: data.githubLink,
-      portfolioLink: data.portfolioLink
+      fullName: data.basicinfo.fullName,
+      email: data.basicinfo.email,
+      mobile: data.basicinfo.mobile,
+      linkedLink: data.basicinfo.linkedLink,
+      githubLink: data.basicinfo.githubLink,
+      portfolioLink: data.basicinfo.portfolioLink
     }
 
     postRequestOptions.body = JSON.stringify(infoData)

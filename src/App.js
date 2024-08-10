@@ -31,8 +31,8 @@ function App() {
       <div className="App">
         <Routes>
           <Route  path="/dashboard" element={<Maincontainer/>}></Route>
-          <Route  path="/register" element={<Register/>}></Route>
-          <Route  path="/" element={<Login/>}></Route>
+          <Route  path="/register" element={<Login pagelink="/register"/>}></Route>
+          <Route  path="/" element={<Login pagelink="/login"/>}></Route>
         </Routes>
       </div>
     </AppContext.Provider>
