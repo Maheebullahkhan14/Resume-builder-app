@@ -10,6 +10,8 @@ import downloadPdfIcon from "./download-pdf-icon.svg"
 import fontsIcon from "./fonts-icon.svg"
 import MainLogo from './cv-logo.png'
 import logoutIcon from './Logout-icon.jpg'
+import loginBg from "./login-bg.png"
+import loginShape1 from "./login-shape.png"
 
 export {
   Template1,
@@ -19,5 +21,5 @@ export {
   sectionIcon3,
   sectionIcon4,
   sectionIcon5,
-  downloadPdfIcon , previewIcon , fontsIcon , MainLogo , logoutIcon
+  downloadPdfIcon , previewIcon , fontsIcon , MainLogo , logoutIcon , loginBg , loginShape1
 };
