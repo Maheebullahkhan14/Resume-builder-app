@@ -7,6 +7,7 @@ import Maininformation from "./FormData";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import { Routes , Router, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
     >
       <div className="App">
         <Routes>
-          <Route  path="/dashboard" element={<Maincontainer/>}></Route>
+          <Route  path="/dashboard" element={<Maincontainer Toaster={Toaster}/>}></Route>
           <Route  path="/register" element={<Login pagelink="/register"/>}></Route>
           <Route  path="/" element={<Login pagelink="/login"/>}></Route>
         </Routes>

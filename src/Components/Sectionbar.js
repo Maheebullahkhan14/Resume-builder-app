@@ -17,7 +17,6 @@ const Sectionbar = () => {
 
   const handleactive = (key, item) => {
     sectactivetab(Object.keys(Maininformation)[key]);
-    console.log(item);
     console.log(Object.keys(Maininformation)[key]);
   };
 
@@ -29,13 +28,6 @@ const Sectionbar = () => {
           <span>Cv Maker</span>
         </div>
         <div className="left-menu-tab-box">
-          {/* <div className="section-header">
-            <h4 className="left-menu-headings">Sections</h4>
-            <p className="left-menu-description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </p>
-          </div> */}
-
           <div className="row">
             {Object.keys(Resumesections).map((item, idx) => (
               <div className="col-lg-12 p-0">

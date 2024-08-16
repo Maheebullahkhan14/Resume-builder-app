@@ -219,6 +219,8 @@ body {
     padding: 10px 22px;
     border-radius: 17px;
     height: 92vh;
+    position: sticky;
+    top: 5px;
 }
 
 .form-input-box input::placeholder {
@@ -262,9 +264,10 @@ body {
     margin-left: 16px;
 }
 
-.resume-setting-header p {
-    font-size: 13px;
-    color: dimgray;
+.settings-main-cover-wrapper {
+    margin-left: 16px;
+    position: sticky;
+    top: 20px;
 }
 
 .template-option h6 {
@@ -412,7 +415,7 @@ p.error-message {
 }
 
 span.error-msg {
-    color: red;
+    color: white;
     font-size: 13px;
 }
 
@@ -509,8 +512,8 @@ button.remove-form-btn {
     height: 25px;
     border: none;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: -2px;
+    right: -14px;
 }
 
 form.resume-form-main-cover-wrapper {
@@ -615,4 +618,34 @@ form.form-content-cover-wrapper .form-group input {
     border: 1px solid #c1bdbd;
     border-radius: 10px;
     padding: 8px;
+}
+
+label.study-input-box input {
+    margin-right: 5px;
+}
+
+.study-input-box-cover label {
+    width: 40%;
+    border: 1px solid #69696924;
+    padding: 8px 10px;
+    border-radius: 7px;
+    /* margin-right: 13px; */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.study-input-box-cover {
+    display: flex;
+    justify-content: space-between;
+}
+
+button.disable-btn.Add-more-form-btn {
+    pointer-events: none;
+    opacity: 0.8;
+    background: dimgray;
+}
+
+.form-input-box span {
+    font-size: 13px;
+    margin-top: 5px;
+    color: red;
 }

@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
 
 
-const Maincontainer = () => {
+const Maincontainer = ({Toaster}) => {
 
   const [userId, setUserId] = useState(JSON.parse(localStorage.getItem('userId')) || '')
   const [userData , setUserData] = useState([])
@@ -59,7 +59,7 @@ const Maincontainer = () => {
             <div className="col-lg-7 p-0">
               <div className="main-form-cover-wrapper">
                 <div className="main-form-content-box">
-                  <Mainforms userSavedData={userSavedData} userData={userData} userId={userId} />
+                  <Mainforms Toaster={Toaster} userSavedData={userSavedData} userData={userData} userId={userId} />
                 </div>
               </div>
             </div>

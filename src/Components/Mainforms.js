@@ -18,12 +18,14 @@ import { formatDate } from "../utils";
 
 import FormHeader from "./FormHeader";
 
-const Mainforms = ({ userData, userId }) => {
+const Mainforms = ({ userData, userId , Toaster }) => {
   const {
+    watch,
     register,
     control,
     handleSubmit,
     reset,
+    setValue,
     getValues,
     formState: { errors },
   } = useForm({
@@ -38,10 +40,11 @@ const Mainforms = ({ userData, userId }) => {
       educations: [
         {
           college: "",
+          isStudying: "",
           degree: "",
-          degreestartDate: "",
-          degreeEnddate: "",
-          degreegrade: "",
+          startDate: "",
+          endDate: "",
+          grade: "",
         },
       ],
       projects: [
@@ -117,7 +120,8 @@ const Mainforms = ({ userData, userId }) => {
           />
         );
       case Resumesections.WorkExp:
-        return <WorkExp register={register} handleSubmit={handleSubmit} append={appendWorkExp} fields={workExpFields} remove={removeWorkExp} />;
+        return <WorkExp errors={errors}
+          setValue={setValue} userId={userId} register={register} handleSubmit={handleSubmit} appendWorkExp={appendWorkExp} fields={workExpFields} removeWorkExp={removeWorkExp} />;
       case Resumesections.Education:
         return (
           <Education
@@ -127,11 +131,14 @@ const Mainforms = ({ userData, userId }) => {
             fields={fields}
             append={append}
             remove={remove}
-            onSubmit={onSubmit}
+            watch={watch}
+            setValue={setValue}
+            Toaster={Toaster}
+            userId={userId}
           />
         );
       case Resumesections.Projects:
-        return <Projects register={register} projectFields={projectFields} handleSubmit={handleSubmit} errors={errors} appendProject={appendProject} removeProject={removeProject} />;
+        return <Projects Toaster={Toaster} userId={userId} register={register} projectFields={projectFields} handleSubmit={handleSubmit} errors={errors} appendProject={appendProject} removeProject={removeProject} />;
       case Resumesections.Skills:
         return <Skills />;
       default:
@@ -171,8 +178,8 @@ const Mainforms = ({ userData, userId }) => {
           ...item,
           startDate: formatDate(item.startDate),
           endDate: formatDate(item.endDate)
-        })) || [{ college: "", degree: "", degreestartDate: "", degreeEnddate: "", degreegrade: "" }],
-        projects: userSavedData[projectKey] && userSavedData[projectKey][0]?.projectData || [{ Title: "", description: "", link: "", endDate: "" }],
+        })) || [{ college: "", degree: "", startDate: "", endDate: "", grade: "", isStudying: "0" }],
+        projects: userSavedData[projectKey] && userSavedData[projectKey][0]?.projectData || [{ title: "", description: "", link: "", endDate: "" }],
         workexp: userSavedData[workexpKey] && userSavedData[workexpKey][0]?.workExpData.map(item => ({
           ...item,
           startDate: formatDate(item.startDate),
@@ -183,7 +190,8 @@ const Mainforms = ({ userData, userId }) => {
           endDate: "",
           role: "",
           location: "",
-          description: ""
+          description: "",
+          currentlyWorking: "0"
         }],
         basicinfo: userSavedData[infoKey] && userSavedData[infoKey][0] || [{
           fullName: "",
@@ -195,18 +203,19 @@ const Mainforms = ({ userData, userId }) => {
       };
       reset(defaultValues);
     }
-
   }, [userSavedData, reset])
 
   useEffect(() => {
     getSavedModules()
   }, [userId])
 
+
+
   return (
     <>
       <div className="main-form-cover-wrapper-box">
         <HeaderStrip userData={userData} />
-        <FormHeader />
+        <FormHeader activetabsection={activetabsection} />
         <div className="form-box-cover">{activeform()}</div>
       </div>
     </>

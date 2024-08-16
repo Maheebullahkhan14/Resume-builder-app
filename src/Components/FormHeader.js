@@ -1,18 +1,18 @@
 import React from "react";
+import { tabContent } from "../constants";
 
-const FormHeader = () => {
+const FormHeader = ({ activetabsection }) => {
+  const content = tabContent[activetabsection];
+
+  if (!content) return null;
+
   return (
-    <>
-      <div className="form-header-details">
-        <div className="form-header">
-          <h6>Basic Info</h6>
-          <p>
-            Duis sunt cupidatat voluptate ullamco proident. Pariatur velit sint
-            officia cupidatat. Amet est commodo qui Lorem elit dolore culpa
-          </p>
-        </div>
+    <div className="form-header-details">
+      <div className="form-header">
+        <h6>{content.title}</h6>
+        <p>{content.description}</p>
       </div>
-    </>
+    </div>
   );
 };
 
