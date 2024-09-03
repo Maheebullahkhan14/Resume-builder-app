@@ -2,15 +2,17 @@ import InputControl from "../Components/smallComponents/InputControll";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { MdSaveAlt } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
-import { SAVE_EDUCATION_API, postRequestOptions } from "../constants";
+import { SAVE_PROJECTS_API, postRequestOptions } from "../constants";
 import Maininformation from "../FormData";
 import { AppContext } from "../ContextApi";
 import { useContext } from "react";
 import toast from "react-hot-toast";
 
-const Projects = ({ register, userId,Toaster , handleSubmit, errors, projectFields, appendProject, removeProject }) => {
+const Projects = ({ register, userId,Toaster,getSavedModules , userSavedData , handleSubmit, errors, projectFields, appendProject, removeProject }) => {
 
     const { sectactivetab } = useContext(AppContext)
+
+    const apiUrl = userSavedData.Projects === false ?  `${SAVE_PROJECTS_API}?userId=${userId}` : `api/updateData/projects`
 
     const onSubmit = (data) => {
         saveProjects(data.projects);
@@ -23,12 +25,12 @@ const Projects = ({ register, userId,Toaster , handleSubmit, errors, projectFiel
         }
         postRequestOptions.body = JSON.stringify(infoData)
         try {
-            const response = await fetch(`http://localhost:3000/${SAVE_EDUCATION_API}?userId=${userId}`, postRequestOptions)
+            const response = await fetch(`http://localhost:3000/${apiUrl}`, postRequestOptions)
             if (!response.ok) {
                 const errorResponse = await response.json()
                 toast.error(errorResponse.msg)
                 return
-            }
+            } 
             const res = await response.json()
             toast.success(res.msg)
             sectactivetab(Object.keys(Maininformation)[4])
@@ -146,7 +148,7 @@ const Projects = ({ register, userId,Toaster , handleSubmit, errors, projectFiel
                     <div className="submit-btn-box">
                         <button className="submit-btn" type="submit">
                             <span><MdSaveAlt /></span>
-                            Save
+                            { userSavedData.Projects === false ? "Save" : "update" }
                         </button>
                     </div>
                 </div>

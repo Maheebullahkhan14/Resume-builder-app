@@ -7,7 +7,7 @@ import { toast , Toaster } from 'react-hot-toast';
 import Maininformation from "../FormData";
 import { AppContext } from "../ContextApi";
 
-const WorkExp = ({ register, handleSubmit,errors , userId , fields, setValue, appendWorkExp, removeWorkExp }) => {
+const WorkExp = ({ register,userSavedData, handleSubmit,errors , userId , fields, setValue, appendWorkExp, removeWorkExp }) => {
 
 const {sectactivetab } = useContext(AppContext)
 
@@ -18,9 +18,7 @@ const {sectactivetab } = useContext(AppContext)
     setValue("workexp", updatedFields);
   };
 
-  useEffect(() =>{
-    console.log(fields)
-  },[])
+  const apiUrl = userSavedData.workExp === false ?  `${SAVE_WORKEXP_API}?userId=${userId}` : `api/updateData/workexperience` 
 
   const saveWorkExp = async (data) => {
     const infoData = {
@@ -29,7 +27,7 @@ const {sectactivetab } = useContext(AppContext)
     }
     postRequestOptions.body = JSON.stringify(infoData)
     try {
-      const response = await fetch(`http://localhost:3000/${SAVE_WORKEXP_API}?userId=${userId}`, postRequestOptions)
+      const response = await fetch(`http://localhost:3000/${apiUrl}`, postRequestOptions)
       if (!response.ok) {
         const errorResponse = await response.json()
         toast.error(errorResponse.msg)
@@ -61,10 +59,10 @@ const {sectactivetab } = useContext(AppContext)
                                   id={`workexp[${index}].company`}
                                   name={`workexp[${index}].company`}
                                   placeholder="Enter Company Name"
+                                  required
                                   {...register(`workexp[${index}].company`, {
                                       required: "Company name is required",
                                   })}
-                                  defaultValue={item.company}
                               />
                               {errors?.workexp?.[index]?.company && (
                                   <span>{errors.workexp[index].company.message}</span>
@@ -83,7 +81,7 @@ const {sectactivetab } = useContext(AppContext)
                                   {...register(`workexp[${index}].startDate`, {
                                       required: "Start date is required",
                                   })}
-                                  defaultValue={item.startDate}
+                                  required
                               />
                               {errors?.workexp?.[index]?.startDate && (
                                   <span>{errors.workexp[index].startDate.message}</span>
@@ -140,7 +138,6 @@ const {sectactivetab } = useContext(AppContext)
                                       {...register(`workexp[${index}].endDate`, {
                                           required: "End date is required",
                                       })}
-                                      defaultValue={item.endDate}
                                   />
                                   {errors?.workexp?.[index]?.endDate && (
                                       <span>{errors.workexp[index].endDate.message}</span>
@@ -159,7 +156,6 @@ const {sectactivetab } = useContext(AppContext)
                                   {...register(`workexp[${index}].role`, {
                                       required: "Role is required",
                                   })}
-                                  defaultValue={item.role}
                               />
                               {errors?.workexp?.[index]?.role && (
                                   <span>{errors.workexp[index].role.message}</span>
@@ -177,7 +173,6 @@ const {sectactivetab } = useContext(AppContext)
                                   {...register(`workexp[${index}].location`, {
                                       required: "Location is required",
                                   })}
-                                  defaultValue={item.location}
                               />
                               {errors?.workexp?.[index]?.location && (
                                   <span>{errors.workexp[index].location.message}</span>
@@ -195,7 +190,6 @@ const {sectactivetab } = useContext(AppContext)
                                   {...register(`workexp[${index}].description`, {
                                       required: "Description is required",
                                   })}
-                                  defaultValue={item.description}
                               />
                               {errors?.workexp?.[index]?.description && (
                                   <span>{errors.workexp[index].description.message}</span>
@@ -237,7 +231,7 @@ const {sectactivetab } = useContext(AppContext)
             <div className="submit-btn-box">
               <button className="submit-btn" type="submit">
                 <span><MdSaveAlt /></span>
-                Save
+                {userSavedData.workExp === false ? "Save" :  "Update" }
               </button>
             </div>
           </div>

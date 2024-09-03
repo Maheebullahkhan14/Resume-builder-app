@@ -68,6 +68,8 @@ const Mainforms = ({ userData, userId , Toaster }) => {
     },
   });
 
+  const [userSavedData, setUserSavedData] = useState([])
+
   const { fields, append, remove } = useFieldArray({
     control,
     name: "educations",
@@ -117,10 +119,15 @@ const Mainforms = ({ userData, userId , Toaster }) => {
             handleSubmit={handleSubmit}
             errors={errors}
             userId={userId}
+            userSavedData={userSavedData}
+            getSavedModules={getSavedModules}
           />
         );
       case Resumesections.WorkExp:
-        return <WorkExp errors={errors}
+        return <WorkExp
+          userSavedData ={userSavedData}
+          getSavedModules={getSavedModules}
+          errors={errors}
           setValue={setValue} userId={userId} register={register} handleSubmit={handleSubmit} appendWorkExp={appendWorkExp} fields={workExpFields} removeWorkExp={removeWorkExp} />;
       case Resumesections.Education:
         return (
@@ -134,11 +141,13 @@ const Mainforms = ({ userData, userId , Toaster }) => {
             watch={watch}
             setValue={setValue}
             Toaster={Toaster}
+            userSavedData ={userSavedData}
             userId={userId}
+            getSavedModules={getSavedModules}
           />
         );
       case Resumesections.Projects:
-        return <Projects Toaster={Toaster} userId={userId} register={register} projectFields={projectFields} handleSubmit={handleSubmit} errors={errors} appendProject={appendProject} removeProject={removeProject} />;
+        return <Projects getSavedModules={getSavedModules} userSavedData={userSavedData} Toaster={Toaster} userId={userId} register={register} projectFields={projectFields} handleSubmit={handleSubmit} errors={errors} appendProject={appendProject} removeProject={removeProject} />;
       case Resumesections.Skills:
         return <Skills />;
       default:
@@ -146,7 +155,6 @@ const Mainforms = ({ userData, userId , Toaster }) => {
     }
   };
 
-  const [userSavedData, setUserSavedData] = useState([])
 
   const getSavedModules = async () => {
     try {
@@ -179,7 +187,7 @@ const Mainforms = ({ userData, userId , Toaster }) => {
           startDate: formatDate(item.startDate),
           endDate: formatDate(item.endDate)
         })) || [{ college: "", degree: "", startDate: "", endDate: "", grade: "", isStudying: "0" }],
-        projects: userSavedData[projectKey] && userSavedData[projectKey][0]?.projectData || [{ title: "", description: "", link: "", endDate: "" }],
+        projects: userSavedData[projectKey] && userSavedData[projectKey][0]?.projectData || [{ title: "", description: "", link: "",startDate : "", endDate: "" }],
         workexp: userSavedData[workexpKey] && userSavedData[workexpKey][0]?.workExpData.map(item => ({
           ...item,
           startDate: formatDate(item.startDate),
@@ -193,13 +201,14 @@ const Mainforms = ({ userData, userId , Toaster }) => {
           description: "",
           currentlyWorking: "0"
         }],
-        basicinfo: userSavedData[infoKey] && userSavedData[infoKey][0] || [{
+        basicinfo: userSavedData[infoKey] && userSavedData[infoKey][0] || {
           fullName: "",
           email: "",
           githubLink: "",
           linkedinLink: "",
-          mobile: ""
-        }]
+          mobile: "",
+          portfolio : ""
+        }
       };
       reset(defaultValues);
     }

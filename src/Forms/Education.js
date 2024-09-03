@@ -7,10 +7,13 @@ import { AppContext } from "../ContextApi";
 import toast from "react-hot-toast";
 import Maininformation from "../FormData";
 
-const Education = ({ register, Toaster , userId , handleSubmit, watch, errors, setValue, fields, append, remove }) => {
+const Education = ({ register, Toaster,userSavedData , userId , handleSubmit, watch, errors, setValue, fields, append, remove }) => {
     const [isStillStudying, setIsStillStudying] = useState([]);
     const { sectactivetab } = useContext(AppContext)
     const watchedFields = watch('educations');
+
+    const apiUrl = userSavedData.Projects === false ?  `${SAVE_EDUCATION_API}?userId=${userId}` : `api/updateData/education`
+
 
     // Debugging: Log fields array
     useEffect(() => {
@@ -29,7 +32,7 @@ const Education = ({ register, Toaster , userId , handleSubmit, watch, errors, s
         }
         postRequestOptions.body = JSON.stringify(infoData)
         try {
-            const response = await fetch(`http://localhost:3000/${SAVE_EDUCATION_API}?userId=${userId}`, postRequestOptions)
+            const response = await fetch(`http://localhost:3000/${apiUrl}`, postRequestOptions)
             if (!response.ok) {
                 const errorResponse = await response.json()
                 toast.error(errorResponse.msg)
@@ -37,7 +40,7 @@ const Education = ({ register, Toaster , userId , handleSubmit, watch, errors, s
             }
             const res = await response.json()
             toast.success(res.msg)
-            sectactivetab(Object.keys(Maininformation)[1])
+            sectactivetab(Object.keys(Maininformation)[3])
         } catch (error) {
             console.log(error)
         }
@@ -240,7 +243,7 @@ const Education = ({ register, Toaster , userId , handleSubmit, watch, errors, s
                             <span>
                                 <MdSaveAlt />
                             </span>
-                            Save
+                            { userSavedData.Education === false ? "Save" : "update" }
                         </button>
                     </div>
                 </div>

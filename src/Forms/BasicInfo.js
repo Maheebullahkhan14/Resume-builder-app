@@ -6,30 +6,34 @@ import Maininformation from "../FormData";
 
 
 
-const BasicInfo = ({ register, handleSubmit, errors, userId }) => {
+const BasicInfo = ({ register, handleSubmit, errors, userId , userSavedData }) => {
 
   const {sectactivetab } = useContext(AppContext)
 
   const saveInfo = async (data) => {
+
+    const apiUrl = userSavedData.BasicInfo !== false || userSavedData.BasicInfo ? `api/updateData/basicinfo` : `${SAVEINFOAPI}?userId=${userId}`
+    // const apiUrl = userSavedData.BasicInfo  ? `api/updateData/basicinfo` : `${SAVEINFOAPI}?userId=${userId}`
+
     const infoData = {
       userId: userId,
       fullName: data.basicinfo.fullName,
       email: data.basicinfo.email,
       mobile: data.basicinfo.mobile,
-      linkedLink: data.basicinfo.linkedLink,
+      linkedinLink: data.basicinfo.linkedinLink,
       githubLink: data.basicinfo.githubLink,
       portfolioLink: data.basicinfo.portfolioLink
     }
 
     postRequestOptions.body = JSON.stringify(infoData)
     try {
-      const response = await fetch(`http://localhost:3000/${SAVEINFOAPI}?userId=${userId}`, postRequestOptions)
+      const response = await fetch(`http://localhost:3000/${apiUrl}`, postRequestOptions)
       if (!response.ok) {
         const errorResponse = await response.json()
         toast.error(errorResponse.msg)
         return
       }
-      const res = await response.json()
+      const res = await response.json()  
       toast.success(res.msg)
       sectactivetab(Object.keys(Maininformation)[1])
   } catch (error) {
@@ -137,9 +141,10 @@ const BasicInfo = ({ register, handleSubmit, errors, userId }) => {
               </div>
             </div>
           </div>
+          {/* {console.log(userSavedData.Basicinfo )} */}
           <div className="submit-btn-box">
             <button className="submit-btn" type="submit">
-              Save
+              {userSavedData.BasicInfo !== false || userSavedData.BasicInfo ? "Update" : "Save"}
             </button>
           </div>
         </form>
