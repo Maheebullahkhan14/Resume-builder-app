@@ -110,17 +110,19 @@ body {
 }
 
 .form-input-box label {
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     font-size: 14px;
-    color: #000000eb;
-    font-weight: 500;
+    color: #060606eb;
+    font-weight: 100;
 }
-
 .form-input-box input {
     padding: 7px 15px;
     border-radius: 7px;
     border: none;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    font-size: 14px;
+    font-weight: 200;
+    color: #434040;
+    box-shadow: rgb(99 99 99 / 10%) 0px 2px 8px 0px;
 }
 
 .form-input-box input::placeholder {
@@ -602,6 +604,42 @@ form.form-content-cover-wrapper {
     border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
+button.generate-pdf-btn {
+    border-radius: 7px;
+    padding: 6px 15px;
+    background: darkslateblue;
+    color: white;
+    border: none;
+    margin-bottom: 15px;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 25px;
+}
+button.generate-pdf-btn svg {
+    font-size: 25px;
+    margin-right: 11px;
+}
+
+.social-details {
+    max-width: 200px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+
+.user-detail-list {
+    margin-right: 10px;
+}
+
+
+form.form-content-cover-wrapper .form-group input::placeholder {
+    color: #f3e7e7;
+    font-weight: 200 !important;
+    font-size: 12px;
+}
+
 form.form-content-cover-wrapper h5 {
     font-size: 25px;
     margin-bottom: 20px;
@@ -648,4 +686,69 @@ button.disable-btn.Add-more-form-btn {
     font-size: 13px;
     margin-top: 5px;
     color: red;
+}
+
+.resume-setting-header p {
+    font-size: 14px;
+    color: dimgray;
+    font-weight: 200;
+}
+
+.font-color-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    background-color: #f9f9f9;
+    margin-left: 53px;
+    margin-bottom: 22px;
+    border-radius: 8px;
+    width: 350px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-label {
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.font-select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    outline: none;
+    cursor: pointer;
+    width: 80%;
+    border-radius: 9px;
+    margin-left: 10px;
+    font-size: 14px;
+    padding: 9px 10px;
+}
+
+.color-picker-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.color-square {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid black;
+    margin-left: 4px;
+}
+
+.color-picker {
+    margin-top: 8px;
 }

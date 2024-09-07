@@ -223,7 +223,6 @@ const Mainforms = ({ userData, userId , Toaster }) => {
   return (
     <>
       <div className="main-form-cover-wrapper-box">
-        <HeaderStrip userData={userData} />
         <FormHeader activetabsection={activetabsection} />
         <div className="form-box-cover">{activeform()}</div>
       </div>

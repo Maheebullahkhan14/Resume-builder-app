@@ -4,6 +4,7 @@ import { postRequestOptions } from '../constants';
 import { loginBg , loginShape1 } from '../Assets';
 import LoginForm from '../Forms/LoginForm';
 import RegisterForm from '../Forms/RegisterForm';
+import { Link } from 'react-router-dom';
 
 const Login = ({pagelink}) => {
     return (
@@ -14,6 +15,9 @@ const Login = ({pagelink}) => {
                         <div className="login-innercover-main-wrapper">
                             {pagelink == "/login" ? <LoginForm/> : <RegisterForm/>}
                         </div>
+                        {pagelink == "/login" && (
+                            <Link to="/register" className='text-white font-400'>Not registered yet</Link>
+                        )}
                     </div>
                 </div>
             </div>

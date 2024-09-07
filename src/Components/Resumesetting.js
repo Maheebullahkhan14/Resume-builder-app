@@ -6,16 +6,17 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import { fontsIcon , previewIcon , selectIcon , downloadPdfIcon } from "../Assets";
 import PdfTemplate from "../HtmltoPdf/PdfTemplate";
 
-const Resumesetting = () => {
+const Resumesetting = ({userData , userSavedData}) => {
   const [show, setshow] = useState(false);
   const [showPdfTemplate , setshowpdfTemplate] = useState(false)
   const [selectedTemplate, setSelectedTemplate] = useState(
     JSON.parse(localStorage.getItem("SELECTED_TEMPLATE")) || []
   );
 
-  useEffect(() => {
-    console.log(selectedTemplate);
-  }, [selectedTemplate]);
+  const handleResumeDownload = (e) =>{
+    console.log(e)
+  }
+
 
   return (
     <>
@@ -57,6 +58,7 @@ const Resumesetting = () => {
               <DropdownButton
                 title="Download PDF"
                 className="download-pdf-drop-down"
+                onSelect={(e) =>handleResumeDownload(e)}
               >
                 <Dropdown.Item>PDF</Dropdown.Item>
                 <Dropdown.Item href="#/action-2">Word </Dropdown.Item>
@@ -83,6 +85,8 @@ const Resumesetting = () => {
       <PdfTemplate
         showPdfTemplate={showPdfTemplate}
         setshowpdfTemplate={setshowpdfTemplate}
+        userSavedData={userSavedData}
+        userData={userData}
       />
     </>
   );
