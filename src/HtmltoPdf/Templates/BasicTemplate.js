@@ -1,8 +1,8 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ChromePicker } from 'react-color';
 
-const BasicTemplate = ({ userSavedData ,selectedfont,setSelectedFont , color , setColor , fonts }) => {
+const BasicTemplate = ({ userSavedData, selectedfont, setSelectedFont, color, setColor, fonts }) => {
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -10,6 +10,7 @@ const BasicTemplate = ({ userSavedData ,selectedfont,setSelectedFont , color , s
     };
 
     const basicinfo = userSavedData?.Basicinfo[0] || {
+        summary:"kwheuiyeriyeiryiueyriuyeruiyeiuyeruiyieuiryieyr",
         fullName: "Your Name",
         email: "youremail@example.com",
         linkedinLink: "",
@@ -48,7 +49,7 @@ const BasicTemplate = ({ userSavedData ,selectedfont,setSelectedFont , color , s
 
     return (
         <>
-            <div className="pdf-cover-box" style={{fontFamily : selectedfont}}>
+            <div className="pdf-cover-box" style={{ fontFamily: selectedfont }}>
                 <div className="pdf-content-box">
                     <div className="pdf-header mb-5">
                         <h5
@@ -62,24 +63,36 @@ const BasicTemplate = ({ userSavedData ,selectedfont,setSelectedFont , color , s
                                 <span className="user-detail-list">
                                     Linkedin : <span className="social-details">
                                         <Link to={basicinfo.linkedinLink}>
-                                        {basicinfo.linkedinLink.replace(/(^\w+:|^)\/\//, '').split('/')[0]}
-                                    </Link>
+                                            {basicinfo.linkedinLink.replace(/(^\w+:|^)\/\//, '').split('/')[0]}
+                                        </Link>
                                     </span>
                                 </span>
                             )}
                             |
                             <span className="user-detail-list">
                                 Github: <span className='social-details'>
-                                {basicinfo.githubLink || 'github.com/yourprofile'}
-                                    </span> 
+                                    {basicinfo.githubLink || 'github.com/yourprofile'}
+                                </span>
                             </span>
                             |
                             <span className="user-detail-list">
                                 Email: <span className='social-details'>
-                                {basicinfo.email}</span> 
+                                    {basicinfo.email}</span>
                             </span>
                         </div>
                     </div>
+
+                    <section className="Summary mb-5">
+                       <h6
+                            className="section-header"
+                            style={{ fontFamily: selectedfont, color: color }}
+                        >
+                            Professional Summary
+                        </h6>
+                        <div className="dotted-line"></div>
+                        <p>{basicinfo?.summary}</p>
+
+                    </section>
 
                     <section className="Experience">
                         <h6
@@ -151,7 +164,7 @@ const BasicTemplate = ({ userSavedData ,selectedfont,setSelectedFont , color , s
                             className="section-header"
                             style={{ fontFamily: selectedfont, color: color }}
                         >
-                            PROJECTS
+                            Projects
                         </h6>
                         <div className="dotted-line"></div>
                         <div className="projects-list-box-cover">
@@ -178,7 +191,7 @@ const BasicTemplate = ({ userSavedData ,selectedfont,setSelectedFont , color , s
                             className="section-header"
                             style={{ fontFamily: selectedfont, color: color }}
                         >
-                            SKILLS
+                            Skills
                         </h6>
                         <div className="dotted-line"></div>
                         <div className="skills-list-box-cover d-flex">
@@ -193,7 +206,7 @@ const BasicTemplate = ({ userSavedData ,selectedfont,setSelectedFont , color , s
                 </div>
             </div>
 
-            
+
         </>
     );
 };

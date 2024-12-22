@@ -115,7 +115,7 @@ body {
     color: #060606eb;
     font-weight: 100;
 }
-.form-input-box input {
+.form-input-box input,textarea {
     padding: 7px 15px;
     border-radius: 7px;
     border: none;
@@ -296,7 +296,7 @@ body {
     color: dimgray;
 }
 
-.modal-content {
+.pdf-modal-main-wrapper .modal-content {
     width: 900px;
 }
 
@@ -311,7 +311,7 @@ body {
     width: 100%;
 }
 
-.modal-content {
+.pdf-modal-main-wrapper .modal-content {
     width: 900px;
     margin-left: -30px;
 }
@@ -402,6 +402,7 @@ button.change-template-button {
 /* Pdf Css Starts------------------------------ */
 .pdf-modal-main-wrapper .modal-body {
     padding: 0px;
+    overflow: hidden;
 }
 
 .pdf-modal-main-wrapper .modal-content {
@@ -698,26 +699,47 @@ button.disable-btn.Add-more-form-btn {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding: 16px;
+    padding: 20px;
     background-color: #f9f9f9;
-    margin-left: 53px;
     margin-bottom: 22px;
-    border-radius: 8px;
+    border-radius: 16px;
+    padding-bottom: 20px;
+    min-height: 135px;
     width: 350px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 25px;
+    right: -400px;
+    transition: right 0.25s ease;
 }
 
+label.control-label span {
+    position: absolute;
+    right: 10px;
+    top: 11px;
+    cursor: pointer;
+}
+
+label.control-label span svg {
+    font-size: 20px;
+}
 .control-group {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     gap: 8px;
+    flex-direction: column;
 }
 
+.font-setting {
+    display: flex;
+    justify-content: space-between;
+}
 .control-label {
     font-weight: 400;
     display: flex;
     align-items: center;
     gap: 4px;
+    margin-bottom: 6px;
 }
 .font-select {
     padding: 8px;
@@ -725,9 +747,8 @@ button.disable-btn.Add-more-form-btn {
     border: 1px solid #ddd;
     outline: none;
     cursor: pointer;
-    width: 80%;
+    width: 85%;
     border-radius: 9px;
-    margin-left: 10px;
     font-size: 14px;
     padding: 9px 10px;
 }
@@ -739,16 +760,146 @@ button.disable-btn.Add-more-form-btn {
 }
 
 .color-square {
-    width: 40px;
-    height: 40px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    width: 37px;
+    height: 37px;
     cursor: pointer;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     border: 2px solid black;
     margin-left: 4px;
+    border-radius: 7px;
 }
 
 .color-picker {
     margin-top: 8px;
 }
+
+.edit-fonts {
+    cursor: pointer;
+    width: 40px;
+    background: #7c81e7;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: white;
+    flex-direction: column;
+    align-items: center;
+    padding: 9px 0px;
+    position: absolute;
+    top: 20px;
+    right: 0;
+}
+
+.edit-fonts span {
+    line-height: 18px;
+    text-align: center;
+}
+
+span.edit-font-icon {
+    margin-bottom: 7px;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    background: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ai-modal-banner-cover img {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.search-ai-prompt-cover-wrapper textarea {
+    width: 97%;
+    margin: 0 auto;
+    display: flex;
+    border-radius: 18px;
+}
+
+.search-ai-prompt-cover-wrapper button {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    position: absolute;
+    background: #5379f6;
+    border: none;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    right: 20px;
+    top: 10px;
+}
+
+.search-ai-prompt-cover-wrapper {
+    position: relative;
+}
+
+.fade-down {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-down-active {
+    opacity: 1 !important;
+    transform: translateY(0);
+}
+
+.ai-modal-body.modal-body {
+    padding: 20px 28px;
+}
+
+.section-title-box h5 span svg {
+    font-size: 19px;
+    position: absolute;
+    right: 20px;
+}
+
+.skeleton-loader {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: white;
+    padding: 45px 25px;
+    border-radius: 15px;
+    margin: 0 auto;
+}
+  
+  .skeleton-line {
+    height: 12px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .skeleton-line::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 1.2s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  

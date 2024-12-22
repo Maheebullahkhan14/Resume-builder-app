@@ -45,7 +45,7 @@ const Projects = ({ register, userId,Toaster,getSavedModules , userSavedData , h
                 {projectFields?.map((item, index) => (
                     <div key={index} className="resume-form-main-cover-wrapper">
                         <div className="row">
-                            <div className="col-lg-6">
+                            <div className="col-lg-12">
                                 <div className="form-input-box">
                                     <label htmlFor={`projects[${index}].title`}>Title</label>
                                     <input
@@ -59,24 +59,6 @@ const Projects = ({ register, userId,Toaster,getSavedModules , userSavedData , h
                                     />
                                     {errors?.projects?.[index]?.title && (
                                         <span>{errors.projects[index].title.message}</span>
-                                    )}
-                                </div>
-                            </div>
-
-                            <div className="col-lg-6">
-                                <div className="form-input-box">
-                                    <label htmlFor={`projects[${index}].description`}>Description</label>
-                                    <input
-                                        type="text"
-                                        id={`projects[${index}].description`}
-                                        placeholder="Enter project description"
-                                        {...register(`projects[${index}].description`, {
-                                            required: "Description is required",
-                                        })}
-                                        defaultValue={item.description}
-                                    />
-                                    {errors?.projects?.[index]?.description && (
-                                        <span>{errors.projects[index].description.message}</span>
                                     )}
                                 </div>
                             </div>
@@ -113,6 +95,25 @@ const Projects = ({ register, userId,Toaster,getSavedModules , userSavedData , h
                                     />
                                     {errors?.projects?.[index]?.endDate && (
                                         <span>{errors.projects[index].endDate.message}</span>
+                                    )}
+                                </div>
+                            </div>
+
+                            <div className="col-lg-12">
+                                <div className="form-input-box">
+                                    <label htmlFor={`projects[${index}].description`}>Description</label>
+                                    <textarea
+                                     
+                                        rows={4}
+                                        id={`projects[${index}].description`}
+                                        placeholder="Enter project description"
+                                        {...register(`projects[${index}].description`, {
+                                            required: "Description is required",
+                                        })}
+                                        defaultValue={item.description}
+                                    />
+                                    {errors?.projects?.[index]?.description && (
+                                        <span>{errors.projects[index].description.message}</span>
                                     )}
                                 </div>
                             </div>

@@ -25,29 +25,30 @@ export const SAVE_PROJECTS_API = 'api/saveProjects'
 
 
 export const tabContent = {
-    Basicinfo: {
-      title: "Basic Info",
-      description:
-        "Duis sunt cupidatat voluptate ullamco proident. Pariatur velit sint officia cupidatat. Amet est commodo qui Lorem elit dolore culpa",
-    },
-    WorkExp: {
-      title: "Work Experience",
-      description:
-        "Duis sunt cupidatat voluptate ullamco proident. Pariatur velit sint officia cupidatat. Amet est commodo qui Lorem elit dolore culpa",
-    },
-    Education: {
-      title: "Education",
-      description:
-        "Duis sunt cupidatat voluptate ullamco proident. Pariatur velit sint officia cupidatat. Amet est commodo qui Lorem elit dolore culpa",
-    },
-    Projects: {
-      title: "Projects",
-      description:
-        "Duis sunt cupidatat voluptate ullamco proident. Pariatur velit sint officia cupidatat. Amet est commodo qui Lorem elit dolore culpa",
-    },
-    Skills: {
-      title: "Skills",
-      description:
-        "Duis sunt cupidatat voluptate ullamco proident. Pariatur velit sint officia cupidatat. Amet est commodo qui Lorem elit dolore culpa",
-    },
-  };
+  Basicinfo: {
+    title: "Basic Info",
+    description:
+      "Basic information about the individual, including contact details, a brief summary, and professional background.",
+  },
+  WorkExp: {
+    title: "Work Experience",
+    description:
+      "A comprehensive overview of previous job roles, responsibilities, and accomplishments in the workplace.",
+  },
+  Education: {
+    title: "Education",
+    description:
+      "Details of educational qualifications, including institutions attended, degrees obtained, and relevant courses.",
+  },
+  Projects: {
+    title: "Projects",
+    description:
+      "Highlights of significant projects undertaken, showcasing skills applied and outcomes achieved.",
+  },
+  Skills: {
+    title: "Skills",
+    description:
+      "A list of key skills and competencies relevant to the individual’s career, including both technical and soft skills.",
+  },
+};
+

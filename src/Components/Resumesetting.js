@@ -3,11 +3,13 @@ import info_icon from "../Assets/info_icon.png";
 import TemplatesModal from "./TemplatesModal";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import { fontsIcon , previewIcon , selectIcon , downloadPdfIcon } from "../Assets";
+import { fontsIcon , previewIcon , selectIcon , downloadPdfIcon ,aiIcon } from "../Assets";
 import PdfTemplate from "../HtmltoPdf/PdfTemplate";
+import AiModal from "./AiModal";
 
 const Resumesetting = ({userData , userSavedData}) => {
   const [show, setshow] = useState(false);
+  const [showAiModal, setshowAiModal] = useState(false);
   const [showPdfTemplate , setshowpdfTemplate] = useState(false)
   const [selectedTemplate, setSelectedTemplate] = useState(
     JSON.parse(localStorage.getItem("SELECTED_TEMPLATE")) || []
@@ -69,9 +71,9 @@ const Resumesetting = ({userData , userSavedData}) => {
               <img src={selectIcon} alt="info-icon"></img>
               <h6>Select Template</h6>
             </div>
-            <div className="template-option">
-              <img src={fontsIcon} alt="info-icon"></img>
-              <h6>Fonts Formatting</h6>
+            <div className="template-option" onClick={() =>setshowAiModal(true)}>
+              <img src={aiIcon} alt="info-icon"></img>
+              <h6>Create with Ai</h6>
             </div>
           </div>
         </div>
@@ -88,6 +90,7 @@ const Resumesetting = ({userData , userSavedData}) => {
         userSavedData={userSavedData}
         userData={userData}
       />
+      <AiModal show={showAiModal} setshow={setshowAiModal} />
     </>
   );
 };

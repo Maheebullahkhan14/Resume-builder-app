@@ -31,6 +31,7 @@ const Mainforms = ({ userData, userId , Toaster }) => {
   } = useForm({
     defaultValues: {
       basicinfo: [{
+        summary:"",
         fullName: "",
         email: "",
         githubLink: "",
@@ -86,10 +87,6 @@ const Mainforms = ({ userData, userId , Toaster }) => {
   });
 
   const { activetabsection, Resumesections } = useContext(AppContext);
-
-  const onSubmit = (data) => {
-    console.log(data);
-  };
 
   const Skills = () => {
     const [tags, setTags] = useState([]);

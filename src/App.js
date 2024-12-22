@@ -22,7 +22,7 @@ function App() {
     Education : "Education",
     Projects : "Projects" ,
     Skills : "Skills",
-    Achievements : 'Achievements'
+    // Achievements : 'Achievements'
   }
   
   return (

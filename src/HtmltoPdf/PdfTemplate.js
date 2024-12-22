@@ -4,10 +4,12 @@ import BasicTemplate from "./Templates/BasicTemplate";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { useState, useEffect } from "react";
 import FontColorControls from "./EditoControlls";
+import { MdOutlineModeEditOutline } from "react-icons/md";
 
 const PdfTemplate = ({ showPdfTemplate, userData, setshowpdfTemplate, userSavedData }) => {
 
   const GoogleFontsApiKey = process.env.REACT_APP_FONT_API_KEY
+  const [isSettingActive , setSettingActive] = useState(false)
 
 
   const generatePdf = () => {
@@ -69,23 +71,26 @@ const PdfTemplate = ({ showPdfTemplate, userData, setshowpdfTemplate, userSavedD
         className="custom-modal pdf-modal-main-wrapper p-0"
         aria-labelledby="example-modal-sizes-title-lg"
       >
-        <Modal.Header closeButton>
-          <Modal.Title
-            id="example-modal-sizes-title-lg"
-            className="templates-modal-title"
-          >
-            Select Template
-          </Modal.Title>
-        </Modal.Header>
         <Modal.Body>
           <div className="pdf-main-cover-box" id="pdf-container">
             <BasicTemplate selectedfont={selectedfont} setSelectedFont={setSelectedFont} fonts={fonts} userSavedData={userSavedData} setColor={setColor} color={color} />
           </div>
-            <FontColorControls fonts={fonts} setSelectedFont={setSelectedFont} color={color} setColor={setColor}/>
+          <FontColorControls setSettingActive={setSettingActive} isSettingActive={isSettingActive} fonts={fonts} setSelectedFont={setSelectedFont} color={color} setColor={setColor} />
           <button className="generate-pdf-btn" onClick={() => generatePdf()}>
             <MdOutlineFileDownload />
             <span>Download</span>
           </button>
+
+          <div className="edit-fonts" onClick={() =>setSettingActive(!isSettingActive)}>
+            <span className="edit-font-icon">
+              <MdOutlineModeEditOutline />
+            </span>
+            <span>F</span>
+            <span>o</span>
+            <span>n</span>
+            <span>t</span>
+            <span>s</span>
+          </div>
 
         </Modal.Body>
       </Modal>

@@ -12,6 +12,8 @@ import MainLogo from './cv-logo.png'
 import logoutIcon from './Logout-icon.jpg'
 import loginBg from "./login-bg.png"
 import loginShape1 from "./login-shape.png"
+import aiIcon from "./ai-icon.png"
+import aiBanner from "./ai-banner.jpg"
 
 export {
   Template1,
@@ -21,5 +23,5 @@ export {
   sectionIcon3,
   sectionIcon4,
   sectionIcon5,
-  downloadPdfIcon , previewIcon , fontsIcon , MainLogo , logoutIcon , loginBg , loginShape1
+  downloadPdfIcon , previewIcon , fontsIcon , MainLogo , logoutIcon , loginBg , loginShape1 , aiIcon , aiBanner
 };

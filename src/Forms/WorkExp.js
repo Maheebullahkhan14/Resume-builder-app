@@ -183,8 +183,8 @@ const {sectactivetab } = useContext(AppContext)
                       <div className="col-lg-12">
                           <div className="form-input-box">
                               <label htmlFor={`workexp[${index}].description`}>Description</label>
-                              <input
-                                  type="text"
+                              <textarea
+                                    rows={4}
                                   id={`workexp[${index}].description`}
                                   placeholder="Enter description"
                                   {...register(`workexp[${index}].description`, {

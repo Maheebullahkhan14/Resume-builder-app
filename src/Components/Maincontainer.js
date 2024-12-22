@@ -53,7 +53,7 @@ const Maincontainer = ({Toaster}) => {
           <div className="row">
             <div className="col-lg-2">
               <div className="left-menu-bar-section">
-                <Sectionbar />
+                <Sectionbar userSavedData={userSavedData}/>
               </div>
             </div>
             <div className="col-lg-7 p-0">
