@@ -110,17 +110,19 @@ body {
 }
 
 .form-input-box label {
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     font-size: 14px;
-    color: #000000eb;
-    font-weight: 500;
+    color: #060606eb;
+    font-weight: 100;
 }
-
-.form-input-box input {
+.form-input-box input,textarea {
     padding: 7px 15px;
     border-radius: 7px;
     border: none;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    font-size: 14px;
+    font-weight: 200;
+    color: #434040;
+    box-shadow: rgb(99 99 99 / 10%) 0px 2px 8px 0px;
 }
 
 .form-input-box input::placeholder {
@@ -219,6 +221,8 @@ body {
     padding: 10px 22px;
     border-radius: 17px;
     height: 92vh;
+    position: sticky;
+    top: 5px;
 }
 
 .form-input-box input::placeholder {
@@ -262,9 +266,10 @@ body {
     margin-left: 16px;
 }
 
-.resume-setting-header p {
-    font-size: 13px;
-    color: dimgray;
+.settings-main-cover-wrapper {
+    margin-left: 16px;
+    position: sticky;
+    top: 20px;
 }
 
 .template-option h6 {
@@ -291,7 +296,7 @@ body {
     color: dimgray;
 }
 
-.modal-content {
+.pdf-modal-main-wrapper .modal-content {
     width: 900px;
 }
 
@@ -306,7 +311,7 @@ body {
     width: 100%;
 }
 
-.modal-content {
+.pdf-modal-main-wrapper .modal-content {
     width: 900px;
     margin-left: -30px;
 }
@@ -397,6 +402,7 @@ button.change-template-button {
 /* Pdf Css Starts------------------------------ */
 .pdf-modal-main-wrapper .modal-body {
     padding: 0px;
+    overflow: hidden;
 }
 
 .pdf-modal-main-wrapper .modal-content {
@@ -412,7 +418,7 @@ p.error-message {
 }
 
 span.error-msg {
-    color: red;
+    color: white;
     font-size: 13px;
 }
 
@@ -509,8 +515,8 @@ button.remove-form-btn {
     height: 25px;
     border: none;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: -2px;
+    right: -14px;
 }
 
 form.resume-form-main-cover-wrapper {
@@ -599,6 +605,42 @@ form.form-content-cover-wrapper {
     border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
+button.generate-pdf-btn {
+    border-radius: 7px;
+    padding: 6px 15px;
+    background: darkslateblue;
+    color: white;
+    border: none;
+    margin-bottom: 15px;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 25px;
+}
+button.generate-pdf-btn svg {
+    font-size: 25px;
+    margin-right: 11px;
+}
+
+.social-details {
+    max-width: 200px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+
+.user-detail-list {
+    margin-right: 10px;
+}
+
+
+form.form-content-cover-wrapper .form-group input::placeholder {
+    color: #f3e7e7;
+    font-weight: 200 !important;
+    font-size: 12px;
+}
+
 form.form-content-cover-wrapper h5 {
     font-size: 25px;
     margin-bottom: 20px;
@@ -616,3 +658,248 @@ form.form-content-cover-wrapper .form-group input {
     border-radius: 10px;
     padding: 8px;
 }
+
+label.study-input-box input {
+    margin-right: 5px;
+}
+
+.study-input-box-cover label {
+    width: 40%;
+    border: 1px solid #69696924;
+    padding: 8px 10px;
+    border-radius: 7px;
+    /* margin-right: 13px; */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.study-input-box-cover {
+    display: flex;
+    justify-content: space-between;
+}
+
+button.disable-btn.Add-more-form-btn {
+    pointer-events: none;
+    opacity: 0.8;
+    background: dimgray;
+}
+
+.form-input-box span {
+    font-size: 13px;
+    margin-top: 5px;
+    color: red;
+}
+
+.resume-setting-header p {
+    font-size: 14px;
+    color: dimgray;
+    font-weight: 200;
+}
+
+.font-color-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin-bottom: 22px;
+    border-radius: 16px;
+    padding-bottom: 20px;
+    min-height: 135px;
+    width: 350px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 25px;
+    right: -400px;
+    transition: right 0.25s ease;
+}
+
+label.control-label span {
+    position: absolute;
+    right: 10px;
+    top: 11px;
+    cursor: pointer;
+}
+
+label.control-label span svg {
+    font-size: 20px;
+}
+.control-group {
+    display: flex;
+    /* align-items: center; */
+    gap: 8px;
+    flex-direction: column;
+}
+
+.font-setting {
+    display: flex;
+    justify-content: space-between;
+}
+.control-label {
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 6px;
+}
+.font-select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    outline: none;
+    cursor: pointer;
+    width: 85%;
+    border-radius: 9px;
+    font-size: 14px;
+    padding: 9px 10px;
+}
+
+.color-picker-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.color-square {
+    width: 37px;
+    height: 37px;
+    cursor: pointer;
+    /* border-radius: 50%; */
+    border: 2px solid black;
+    margin-left: 4px;
+    border-radius: 7px;
+}
+
+.color-picker {
+    margin-top: 8px;
+}
+
+.edit-fonts {
+    cursor: pointer;
+    width: 40px;
+    background: #7c81e7;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: white;
+    flex-direction: column;
+    align-items: center;
+    padding: 9px 0px;
+    position: absolute;
+    top: 20px;
+    right: 0;
+}
+
+.edit-fonts span {
+    line-height: 18px;
+    text-align: center;
+}
+
+span.edit-font-icon {
+    margin-bottom: 7px;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    background: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ai-modal-banner-cover img {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.search-ai-prompt-cover-wrapper textarea {
+    width: 97%;
+    margin: 0 auto;
+    display: flex;
+    border-radius: 18px;
+}
+
+.search-ai-prompt-cover-wrapper button {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    position: absolute;
+    background: #5379f6;
+    border: none;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    right: 20px;
+    top: 10px;
+}
+
+.search-ai-prompt-cover-wrapper {
+    position: relative;
+}
+
+.fade-down {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-down-active {
+    opacity: 1 !important;
+    transform: translateY(0);
+}
+
+.ai-modal-body.modal-body {
+    padding: 20px 28px;
+}
+
+.section-title-box h5 span svg {
+    font-size: 19px;
+    position: absolute;
+    right: 20px;
+}
+
+.skeleton-loader {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: white;
+    padding: 45px 25px;
+    border-radius: 15px;
+    margin: 0 auto;
+}
+  
+  .skeleton-line {
+    height: 12px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .skeleton-line::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 1.2s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  
