@@ -10,6 +10,8 @@ const BasicInfo = ({ register, handleSubmit, errors, userId, userSavedData }) =>
 
   const { sectactivetab } = useContext(AppContext)
 
+  const API_URL = process.env.REACT_APP_API_URL;
+
   const saveInfo = async (data) => {
 
     const apiUrl = userSavedData.BasicInfo ? `api/updateData/basicinfo` : `${SAVEINFOAPI}?userId=${userId}`
@@ -27,7 +29,7 @@ const BasicInfo = ({ register, handleSubmit, errors, userId, userSavedData }) =>
 
     postRequestOptions.body = JSON.stringify(infoData)
     try {
-      const response = await fetch(`http://localhost:3000/${apiUrl}`, postRequestOptions)
+      const response = await fetch(`${API_URL}/${apiUrl}`, postRequestOptions)
       if (!response.ok) {
         const errorResponse = await response.json()
         toast.error(errorResponse.msg)

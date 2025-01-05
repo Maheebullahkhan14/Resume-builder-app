@@ -18,6 +18,8 @@ const Projects = ({ register, userId,Toaster,getSavedModules , userSavedData , h
         saveProjects(data.projects);
     };
 
+    const API_URL = process.env.REACT_APP_API_URL;
+
     const saveProjects = async (data) => {
         const infoData = {
             userId: userId,
@@ -25,7 +27,7 @@ const Projects = ({ register, userId,Toaster,getSavedModules , userSavedData , h
         }
         postRequestOptions.body = JSON.stringify(infoData)
         try {
-            const response = await fetch(`http://localhost:3000/${apiUrl}`, postRequestOptions)
+            const response = await fetch(`${API_URL}/${apiUrl}`, postRequestOptions)
             if (!response.ok) {
                 const errorResponse = await response.json()
                 toast.error(errorResponse.msg)
