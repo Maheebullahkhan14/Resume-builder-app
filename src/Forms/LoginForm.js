@@ -7,11 +7,12 @@ import { toast, Toaster } from 'react-hot-toast';
 const LoginForm = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const navigate = useNavigate();
-    
+    const API_URL = process.env.REACT_APP_API_URL;
+
     const onSubmit = async (data) => {
         postRequestOptions.body = JSON.stringify(data)
         try {
-            const response = await fetch('http://localhost:3000/api/login', postRequestOptions)
+            const response = await fetch('${API_URL}/api/login', postRequestOptions)
             const res = await response.json();
             if (res.status === 200) {
                 if (res.userId) {

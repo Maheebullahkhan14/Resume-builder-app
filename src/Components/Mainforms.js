@@ -19,6 +19,9 @@ import { formatDate } from "../utils";
 import FormHeader from "./FormHeader";
 
 const Mainforms = ({ userData, userId , Toaster }) => {
+
+  const API_URL = process.env.REACT_APP_API_URL;
+
   const {
     watch,
     register,
@@ -155,7 +158,7 @@ const Mainforms = ({ userData, userId , Toaster }) => {
 
   const getSavedModules = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/${MODULESAPI}?userId=${userId}`, getRequestOptions)
+      const response = await fetch(`${API_URL}/${MODULESAPI}?userId=${userId}`, getRequestOptions)
       if (!response.ok) {
         const errorResponse = await response.json()
         toast.error(errorResponse.msg)

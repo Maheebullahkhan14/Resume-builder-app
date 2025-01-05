@@ -12,10 +12,11 @@ const Maincontainer = ({Toaster}) => {
   const [userId, setUserId] = useState(JSON.parse(localStorage.getItem('userId')) || '')
   const [userData , setUserData] = useState([])
   const [userSavedData , setUserSavedData] = useState([])
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const getSavedModules = async () =>{
     try {
-      const response = await fetch(`http://localhost:3000/${MODULESAPI}?userId=${userId}` , getRequestOptions)
+      const response = await fetch(`${API_URL}/${MODULESAPI}?userId=${userId}` , getRequestOptions)
       if (!response.ok) {
         const errorResponse = await response.json()
         toast.error(errorResponse.msg)
@@ -34,7 +35,7 @@ const Maincontainer = ({Toaster}) => {
     if (userId) {
       const fetchUser = async () =>{
         try {
-          const response = await fetch(`http://localhost:3000/api/getUser?userId=${userId}`, getRequestOptions)
+          const response = await fetch(`${API_URL}/api/getUser?userId=${userId}`, getRequestOptions)
           const res = await response.json();
           setUserData(res)
         } catch (error) {

@@ -11,6 +11,7 @@ const AiModal = ({ show, setshow }) => {
     const [promptContent, setPromptContent] = useState(null);
     const [isAnimating, setIsAnimating] = useState(false);
     const [contentLoading, setContentLoading] = useState(false);
+    const API_URL = process.env.REACT_APP_API_URL;
 
     const generatePrompt = async () => {
         if (promptQuery) {
@@ -20,7 +21,7 @@ const AiModal = ({ show, setshow }) => {
             postRequestOptions.body = JSON.stringify(infoData);
             setContentLoading(true);
             try {
-                const response = await fetch(`http://localhost:3000/${apiUrl}`, postRequestOptions);
+                const response = await fetch(`${API_URL}/${apiUrl}`, postRequestOptions);
                 if (!response.ok) {
                     const errorResponse = await response.json();
                     toast.error(errorResponse.msg);

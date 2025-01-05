@@ -11,6 +11,8 @@ const WorkExp = ({ register,userSavedData, handleSubmit,errors , userId , fields
 
 const {sectactivetab } = useContext(AppContext)
 
+const API_URL = process.env.REACT_APP_API_URL;
+
   const handlestillWorking = (index, value) => {
     const updatedFields = fields.map((field, i) =>
       i === index ? { ...field, currentlyWorking: value } : field
@@ -27,7 +29,7 @@ const {sectactivetab } = useContext(AppContext)
     }
     postRequestOptions.body = JSON.stringify(infoData)
     try {
-      const response = await fetch(`http://localhost:3000/${apiUrl}`, postRequestOptions)
+      const response = await fetch(`${API_URL}/${apiUrl}`, postRequestOptions)
       if (!response.ok) {
         const errorResponse = await response.json()
         toast.error(errorResponse.msg)

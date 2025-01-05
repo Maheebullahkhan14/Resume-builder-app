@@ -11,6 +11,7 @@ const Education = ({ register, Toaster,userSavedData , userId , handleSubmit, wa
     const [isStillStudying, setIsStillStudying] = useState([]);
     const { sectactivetab } = useContext(AppContext)
     const watchedFields = watch('educations');
+    const API_URL = process.env.REACT_APP_API_URL;
 
     const apiUrl = userSavedData.Projects === false ?  `${SAVE_EDUCATION_API}?userId=${userId}` : `api/updateData/education`
 
@@ -32,7 +33,7 @@ const Education = ({ register, Toaster,userSavedData , userId , handleSubmit, wa
         }
         postRequestOptions.body = JSON.stringify(infoData)
         try {
-            const response = await fetch(`http://localhost:3000/${apiUrl}`, postRequestOptions)
+            const response = await fetch(`${API_URL}/${apiUrl}`, postRequestOptions)
             if (!response.ok) {
                 const errorResponse = await response.json()
                 toast.error(errorResponse.msg)
